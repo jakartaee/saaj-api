@@ -1,5 +1,7 @@
 /src/test/resources/javax/xml/soap/test.policy
+/edl-copyright_template.txt
 /copyright-exclude
 /copyright.txt
-/LICENSE
+/CONTRIBUTING.md
+/LICENSE.md
 

@@ -28,7 +28,7 @@
     <properties>
         <api.package>javax.xml.soap</api.package>
         <spec.version>1.4</spec.version>
-        <new.spec.version>1.5</new.spec.version>
+        <new.spec.version>1.4.1</new.spec.version>
         <non.final>false</non.final>
         <findbugs.version>3.0.4</findbugs.version>
         <findbugs.exclude>exclude.xml</findbugs.exclude>
@@ -36,8 +36,22 @@
     </properties>
 
     <name>${api.package} API</name>
-    <inceptionYear>2008</inceptionYear>
     <url>https://projects.eclipse.org/proposals/eclipse-project-jax-ws</url>
+
+    <scm>
+        <connection>scm:git:git://github.com/eclipse-ee4j/saaj-api.git</connection>
+        <developerConnection>scm:git:git@github.com/eclipse-ee4j/saaj-api.git</developerConnection>
+        <url>https://github.com/eclipse-ee4j/saaj-api</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>Eclipse Distribution License - v 1.0</name>
+            <url>http://www.eclipse.org/org/documents/edl-v10.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
     <developers>
         <developer>
@@ -50,18 +64,12 @@
         </developer>
     </developers>
 
+    <inceptionYear>2008</inceptionYear>
+
     <organization>
         <name>Oracle</name>
         <url>http://www.oracle.com</url>
     </organization>
-
-    <licenses>
-        <license>
-            <name>Eclipse Distribution License - v 1.0</name>
-            <url>http://www.eclipse.org/org/documents/edl-v10.php</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
 
     <issueManagement>
         <system>IssueTracker</system>
@@ -70,19 +78,13 @@
 
     <mailingLists>
         <mailingList>
-            <name>Java EE Group</name>
-            <subscribe>https://accounts.eclipse.org/mailing-list/saaj-api-dev</subscribe>
-            <post>saaj-api-dev@eclipse.org</post>
-            <archive>https://dev.eclipse.org/mhonarc/lists/saaj-api-dev</archive>
+            <name>Eclipse Project for JAX-WS mailing list</name>
+            <post>jaxws-dev@eclipse.org</post>
+            <subscribe>https://accounts.eclipse.org/mailing-list/jaxws-dev</subscribe>
+            <unsubscribe>https://accounts.eclipse.org/mailing-list/jaxws-dev</unsubscribe>
+            <archive>https://dev.eclipse.org/mhonarc/lists/jaxws-dev</archive>
         </mailingList>
     </mailingLists>
-
-    <scm>
-        <connection>scm:git:git://github.com/eclipse-ee4j/saaj-api.git</connection>
-        <developerConnection>scm:git:git@github.com/eclipse-ee4j/saaj-api.git</developerConnection>
-        <url>https://github.com/eclipse-ee4j/saaj-api</url>
-      <tag>HEAD</tag>
-  </scm>
 
     <dependencies>
         <dependency>
