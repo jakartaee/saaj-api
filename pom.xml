@@ -22,13 +22,13 @@
 
     <groupId>javax.xml.soap</groupId>
     <artifactId>javax.xml.soap-api</artifactId>
-    <version>1.4.1-SNAPSHOT</version>
+    <version>1.5.0-SNAPSHOT</version>
     <description>SAAJ API - Provides the API for creating and building SOAP messages.</description>
 
     <properties>
         <api.package>javax.xml.soap</api.package>
-        <spec.version>1.4</spec.version>
-        <new.spec.version>1.4.1</new.spec.version>
+        <spec.version>1.5</spec.version>
+        <new.spec.version>1.5.0</new.spec.version>
         <non.final>false</non.final>
         <findbugs.version>3.0.4</findbugs.version>
         <findbugs.exclude>exclude.xml</findbugs.exclude>
