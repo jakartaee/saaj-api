@@ -101,7 +101,7 @@
                 <plugin>
                     <groupId>org.glassfish.copyright</groupId>
                     <artifactId>glassfish-copyright-maven-plugin</artifactId>
-                    <version>1.42</version>
+                    <version>1.50</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
