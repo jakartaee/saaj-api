@@ -27,8 +27,8 @@
 
     <properties>
         <api.package>javax.xml.soap</api.package>
-        <spec.version>1.5</spec.version>
-        <new.spec.version>1.5.0</new.spec.version>
+        <spec.version>1.4</spec.version>
+        <new.spec.version>1.4.0</new.spec.version>
         <non.final>false</non.final>
         <findbugs.version>3.0.4</findbugs.version>
         <findbugs.exclude>exclude.xml</findbugs.exclude>
