@@ -22,7 +22,7 @@
 
     <groupId>jakarta.xml.soap</groupId>
     <artifactId>jakarta.xml.soap-api</artifactId>
-    <version>1.5.0-SNAPSHOT</version>
+    <version>1.4.1-SNAPSHOT</version>
     <description>SAAJ API - Provides the API for creating and building SOAP messages.</description>
 
     <properties>
