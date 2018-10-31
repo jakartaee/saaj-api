@@ -17,7 +17,7 @@
     <parent>
         <groupId>org.eclipse.ee4j</groupId>
         <artifactId>project</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
     </parent>
 
     <properties>
@@ -27,6 +27,9 @@
         <non.final>false</non.final>
         <findbugs.exclude>exclude.xml</findbugs.exclude>
         <findbugs.threshold>Low</findbugs.threshold>
+        <activation.version>1.2.1</activation.version>
+        <legal.doc.source>${project.basedir}</legal.doc.source>
+        <vendor.name>Eclipse Project for JAX-WS</vendor.name>
     </properties>
 
     <groupId>jakarta.xml.soap</groupId>
@@ -64,11 +67,6 @@
 
     <inceptionYear>2008</inceptionYear>
 
-    <organization>
-        <name>Oracle</name>
-        <url>http://www.oracle.com</url>
-    </organization>
-
     <issueManagement>
         <system>IssueTracker</system>
         <url>https://github.com/eclipse-ee4j/saaj-api/issues</url>
@@ -86,6 +84,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
+            <version>${activation.version}</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
@@ -98,6 +101,14 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.1.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.1.1</version>
+                </plugin>
+                <plugin>
                     <groupId>org.glassfish.copyright</groupId>
                     <artifactId>glassfish-copyright-maven-plugin</artifactId>
                     <version>1.50</version>
@@ -106,11 +117,8 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.20</version>
-                    <configuration>
-                        <argLine>
-                            -Xbootclasspath/p:${basedir}/target/classes
-                        </argLine>
-                    </configuration>
+                    <!-- FIXME: 6 jUnit tests are failing with 2.21.0 and later -->
+                    <!--version>2.22.1</version-->
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -180,6 +188,53 @@
         </pluginManagement>
 
         <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/META-INF</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${legal.doc.source}</directory>
+                                    <includes>
+                                        <include>LICENSE.md</include>
+                                        <include>NOTICE.md</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+           <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>jakarta.activation</groupId>
+                                    <artifactId>jakarta.activation-api</artifactId>
+                                    <version>${activation.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/modules</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -254,8 +309,8 @@
                         <Bundle-Description>
                             Java(TM) SAAJ ${spec.version} API Design Specification
                         </Bundle-Description>
-                        <Specification-Vendor>Oracle Corporation</Specification-Vendor>
-                        <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+                        <Specification-Vendor>${vendor.name}</Specification-Vendor>
+                        <Implementation-Vendor>${vendor.name}</Implementation-Vendor>
                         <Implementation-Vendor-Id>org.glassfish</Implementation-Vendor-Id>
                         <_include>-${basedir}/osgi.bundle</_include>
                     </instructions>
@@ -376,9 +431,30 @@
 
     <profiles>
         <profile>
+            <id>jdk-before-9</id>
+            <activation>
+                <jdk>(,9)</jdk>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <configuration>
+                                <argLine>
+                                    -Xbootclasspath/p:${project.build.directory}/classes
+                                </argLine>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
             <id>jdk9</id>
             <activation>
-                <jdk>9</jdk>
+                <jdk>[9,)</jdk>
             </activation>
             <build>
                 <pluginManagement>
@@ -427,7 +503,8 @@
                             <configuration>
                                 <argLine>
                                     --add-modules java.xml.soap
-                                    --upgrade-module-path target/classes
+                                    --upgrade-module-path ${project.build.directory}/classes
+                                    --module-path ${project.build.directory}/modules/jakarta.activation-api-${activation.version}.jar
                                     --add-reads java.xml.soap=ALL-UNNAMED
                                 </argLine>
                             </configuration>
