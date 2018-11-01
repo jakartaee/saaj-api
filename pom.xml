@@ -447,9 +447,7 @@
                                 <execution>
                                     <id>default-compile</id>
                                     <configuration>
-                                        <release>9</release>
-                                        <source>9</source>
-                                        <target>9</target>
+                                        <release>11</release>
                                     </configuration>
                                 </execution>
                                 <execution>
@@ -464,15 +462,6 @@
                                     </configuration>
                                 </execution>
                             </executions>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.felix</groupId>
-                            <artifactId>maven-bundle-plugin</artifactId>
-                            <configuration>
-                                <instructions>
-                                    <_failok>true</_failok>
-                                </instructions>
-                            </configuration>
                         </plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
