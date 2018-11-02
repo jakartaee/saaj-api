@@ -13,7 +13,7 @@
  */
 module java.xml.soap {
     requires transitive java.xml;
-    requires transitive java.activation;
+    requires transitive jakarta.activation;
     requires java.logging;
 
     exports javax.xml.soap;
