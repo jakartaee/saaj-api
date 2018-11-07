@@ -29,7 +29,7 @@
         <findbugs.threshold>Low</findbugs.threshold>
         <activation.version>1.2.1</activation.version>
         <legal.doc.source>${project.basedir}</legal.doc.source>
-        <vendor.name>Eclipse Project for JAX-WS</vendor.name>
+        <vendor.name>Oracle</vendor.name>
     </properties>
 
     <groupId>jakarta.xml.soap</groupId>
@@ -299,6 +299,7 @@
                         </Bundle-Description>
                         <Specification-Vendor>${vendor.name}</Specification-Vendor>
                         <_include>-${basedir}/osgi.bundle</_include>
+                        <_noee>true</_noee>
                     </instructions>
                 </configuration>
                 <executions>
@@ -318,9 +319,6 @@
                     <archive>
                         <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                     </archive>
-                    <excludes>
-                        <exclude>**/*.java</exclude>
-                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -342,13 +340,17 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
-                    <additionalparam>-Xdoclint:all</additionalparam>
+                    <doclint>all</doclint>
                     <groups>
                         <group>
                             <title>SAAJ API Documentation</title>
                             <packages>javax.xml.soap</packages>
                         </group>
                     </groups>
+                    <bottom>
+                        <![CDATA[<br>Copyright &#169; {inceptionYear}&#x2013;{currentYear} {vendor.name}.
+                        All rights reserved.<br>Comments to : <a href="mailto:jaxws-dev@eclipse.org">jaxws-dev@eclipse.org</a>.]]>
+                    </bottom>
                 </configuration>
             </plugin>
             <plugin>
@@ -447,7 +449,8 @@
                                 <execution>
                                     <id>default-compile</id>
                                     <configuration>
-                                        <release>11</release>
+                                        <target>9</target>
+                                        <source>9</source>
                                     </configuration>
                                 </execution>
                                 <execution>
@@ -462,18 +465,6 @@
                                     </configuration>
                                 </execution>
                             </executions>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-surefire-plugin</artifactId>
-                            <configuration>
-                                <argLine>
-                                    --add-modules java.xml.soap
-                                    --upgrade-module-path ${project.build.directory}/classes
-                                    --module-path ${project.build.directory}/modules/jakarta.activation-api-${activation.version}.jar
-                                    --add-reads java.xml.soap=ALL-UNNAMED
-                                </argLine>
-                            </configuration>
                         </plugin>
                     </plugins>
                 </pluginManagement>
