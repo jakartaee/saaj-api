@@ -21,7 +21,7 @@
     </parent>
 
     <properties>
-        <api.package>javax.xml.soap</api.package>
+        <extension.name>jakarta.xml.soap</extension.name>
         <spec.version>1.4</spec.version>
         <new.spec.version>1.4.1</new.spec.version>
         <non.final>false</non.final>
@@ -36,7 +36,7 @@
     <artifactId>jakarta.xml.soap-api</artifactId>
     <version>1.4.1-SNAPSHOT</version>
     <description>SAAJ API - Provides the API for creating and building SOAP messages.</description>
-    <name>${api.package} API</name>
+    <name>${extension.name} API</name>
     <url>https://projects.eclipse.org/proposals/eclipse-project-jax-ws</url>
 
     <scm>
@@ -268,7 +268,7 @@
                         <jarType>api</jarType>
                         <specVersion>${spec.version}</specVersion>
                         <specImplVersion>${project.version}</specImplVersion>
-                        <apiPackage>${api.package}</apiPackage>
+                        <apiPackage>${extension.name}</apiPackage>
                         <newSpecVersion>${new.spec.version}</newSpecVersion>
                     </spec>
                 </configuration>
@@ -276,7 +276,11 @@
                     <execution>
                         <goals>
                             <goal>set-spec-properties</goal>
-                            <goal>check-module</goal>
+                            <!-- TODO:
+                            glassfish-spec-version-maven-plugin needs to be updated
+                            in order to check 'jakarta.' prefixed values in manifest entries
+                            -->
+                            <!--<goal>check-module</goal>-->
                         </goals>
                     </execution>
                 </executions>
