@@ -34,7 +34,7 @@
 
     <groupId>jakarta.xml.soap</groupId>
     <artifactId>jakarta.xml.soap-api</artifactId>
-    <version>1.4.1-SNAPSHOT</version>
+    <version>1.4.1</version>
     <description>SAAJ API - Provides the API for creating and building SOAP messages.</description>
     <name>${extension.name} API</name>
     <url>https://projects.eclipse.org/proposals/eclipse-project-jax-ws</url>
