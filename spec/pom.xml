@@ -39,9 +39,9 @@
     </properties>
 
     <scm>
-        <connection>scm:git:git://github.com/eclipse-ee4j/saaj-api.git</connection>
-        <developerConnection>scm:git:git@github.com:eclipse-ee4j/saaj-api.git</developerConnection>
-        <url>https://github.com/eclipse-ee4j/saaj-api.git</url>
+        <connection>scm:git:git:@github.com:eclipse-ee4j/saaj-api.git</connection>
+        <developerConnection>scm:git:git:@github.com:eclipse-ee4j/saaj-api.git</developerConnection>
+        <url>https://github.com/eclipse-ee4j/saaj-api</url>
         <tag>HEAD</tag>
     </scm>
 
