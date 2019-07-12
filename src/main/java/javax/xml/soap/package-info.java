@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2018 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2005, 2019 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -10,7 +10,7 @@
 
 /**
  * Provides the API for creating and building SOAP messages. This package
- * is defined in the <i>SOAP with Attachments API for Java&trade; (SAAJ) 1.4</i> specification.
+ * is defined in the <i>Jakarta SOAP with Attachments</i> specification.
  * 
  * <p> The API in the <code>javax.xml.soap</code> package allows you to do the following:
  *  
@@ -26,6 +26,9 @@
  *     <li>extract content from a SOAP message   
  *     <li>send a SOAP request-response message   
  * </ul>
+ *
+ * <p>
+ * References in this document to SAAJ refer to the Jakarta SOAP with Attachments API unless otherwise noted.
  *
  * <p>
  * In addition the APIs in the <code>javax.xml.soap</code> package extend
