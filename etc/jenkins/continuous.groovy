@@ -15,17 +15,6 @@
 //   SETTINGS_XML_ID     - Jenkins ID of settings.xml file
 //   SETTINGS_SEC_XML_ID - Jenkins ID of settings-security.xml file
 
-def notifyFailed() {
-    emailext (
-        subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-        body: """
-FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':
-Check console output at "${env.JOB_NAME} [${env.BUILD_NUMBER}]"
-""",
-        recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-    )
-}
-
 pipeline {
     
     agent any
@@ -64,30 +53,24 @@ pipeline {
             }
         }
         // Perform release
-        try {
-            stage('Build') {
-                steps {
-                    configFileProvider([
-                            configFile(
-                                fileId: SETTINGS_XML_ID,
-                                targetLocation: '/home/jenkins/.m2/settings.xml'
-                            ), 
-                            configFile(
-                                fileId: SETTINGS_SEC_XML_ID, 
-                                targetLocation: '/home/jenkins/.m2/'
-                            )]) {
-                        sshagent([SSH_CREDENTIALS_ID]) {
-                            sh 'etc/jenkins/continuous.sh'
-                        }
+        stage('Build') {
+            steps {
+                configFileProvider([
+                        configFile(
+                            fileId: SETTINGS_XML_ID,
+                            targetLocation: '/home/jenkins/.m2/settings.xml'
+                        ), 
+                        configFile(
+                            fileId: SETTINGS_SEC_XML_ID, 
+                            targetLocation: '/home/jenkins/.m2/'
+                        )]) {
+                    sshagent([SSH_CREDENTIALS_ID]) {
+                        sh 'etc/jenkins/continuous.sh'
                     }
-                    junit '**/target/surefire-reports/*.xml'
-                    recordIssues(tools: [spotBugs(useRankAsPriority: true)])
                 }
+                junit '**/target/surefire-reports/*.xml'
+                recordIssues(tools: [spotBugs(useRankAsPriority: true)])
             }
-        } catch(e) {
-            currentBuild.result = "FAILED"
-            notifyFailed()
-            throw e
         }
         
     }
