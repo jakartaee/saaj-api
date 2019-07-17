@@ -64,8 +64,8 @@ pipeline {
             }
         }
         // Perform release
-        stage('Build') {
-            try {
+        try {
+            stage('Build') {
                 steps {
                     configFileProvider([
                             configFile(
@@ -83,13 +83,13 @@ pipeline {
                     junit '**/target/surefire-reports/*.xml'
                     recordIssues(tools: [spotBugs(useRankAsPriority: true)])
                 }
-            } catch(e) {
-                currentBuild.result = "FAILED"
-                notifyFailed()
-                throw e
             }
+        } catch(e) {
+            currentBuild.result = "FAILED"
+            notifyFailed()
+            throw e
         }
-      
+        
     }
 
 }
