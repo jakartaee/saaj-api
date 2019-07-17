@@ -65,15 +65,33 @@ pipeline {
                             targetLocation: '/home/jenkins/.m2/'
                         )]) {
                     sshagent([SSH_CREDENTIALS_ID]) {
-                        sh '''
-                            etc/jenkins/continuous.sh
-                        '''
+                        try {
+                            sh '''
+                                etc/jenkins/continuous.sh
+                            '''
+                        } catch(e) {
+                            currentBuild.result = "FAILED"
+                            notifyFailed()
+                            throw e
+                        }
                     }
                 }
+                junit '**/target/surefire-reports/*.xml'
                 recordIssues(tools: [spotBugs(useRankAsPriority: true)])
             }
         }
       
+    }
+    
+    def notifyFailed() {
+        emailext (
+            subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+            body: """
+FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':
+Check console output at "${env.JOB_NAME} [${env.BUILD_NUMBER}]"
+""",
+            recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+        )
     }
 
 }
