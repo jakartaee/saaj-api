@@ -23,8 +23,8 @@ NEXT_API_VERSION="${4}"
 DRY_RUN="${5}"
 OVERWRITE="${6}"
 
-. etc/scripts/mvn.sh
-. etc/scripts/nexus.sh
+. etc/scripts/maven.incl.sh
+. etc/scripts/nexus.incl.sh
 
 read_version 'SPEC' "${SPEC_DIR}"
 read_version 'API' "${API_DIR}"
