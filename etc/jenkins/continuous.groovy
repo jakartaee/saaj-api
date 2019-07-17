@@ -70,6 +70,7 @@ pipeline {
                         '''
                     }
                 }
+                recordIssues(tools: [spotBugs(useRankAsPriority: true)])
             }
         }
       
