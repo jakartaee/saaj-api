@@ -1,12 +1,19 @@
-# Contributing to Eclipse Project for JAX-WS
+[//]: # " Copyright (c) 2018, 2019 Oracle and/or its affiliates. All rights reserved. "
+[//]: # "  "
+[//]: # " This program and the accompanying materials are made available under the "
+[//]: # " terms of the Eclipse Distribution License v. 1.0, which is available at "
+[//]: # " http://www.eclipse.org/org/documents/edl-v10.php. "
+[//]: # "  "
+[//]: # " SPDX-License-Identifier: BSD-3-Clause "
+
+# Contributing to Jakarta SOAP with Attachments
 
 Thanks for your interest in this project.
 
 ## Project description
 
-The Java API for XML Web Services (JAX-WS) is a Java programming language API
-for creating web services, particularly SOAP services. JAX-WS is one of the Java
-XML programming APIs. It is part of the Java EE platform.
+Jakarta SOAP with Attachments defines API enabling developers to produce
+and consume messages conforming to the SOAP 1.1, SOAP 1.2 and SOAP Attachments Feature.
 
 * https://projects.eclipse.org/projects/ee4j.jaxws
 
