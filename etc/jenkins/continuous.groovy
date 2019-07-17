@@ -15,6 +15,17 @@
 //   SETTINGS_XML_ID     - Jenkins ID of settings.xml file
 //   SETTINGS_SEC_XML_ID - Jenkins ID of settings-security.xml file
 
+def notifyFailed() {
+    emailext (
+        subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+        body: """
+FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':
+Check console output at "${env.JOB_NAME} [${env.BUILD_NUMBER}]"
+""",
+        recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+    )
+}
+
 pipeline {
     
     agent any
@@ -81,17 +92,6 @@ pipeline {
             }
         }
       
-    }
-    
-    def notifyFailed() {
-        emailext (
-            subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-            body: """
-FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':
-Check console output at "${env.JOB_NAME} [${env.BUILD_NUMBER}]"
-""",
-            recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-        )
     }
 
 }
