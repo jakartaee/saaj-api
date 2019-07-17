@@ -65,30 +65,28 @@ pipeline {
         }
         // Perform release
         stage('Build') {
-            steps {
-                configFileProvider([
-                        configFile(
-                            fileId: SETTINGS_XML_ID,
-                            targetLocation: '/home/jenkins/.m2/settings.xml'
-                        ), 
-                        configFile(
-                            fileId: SETTINGS_SEC_XML_ID, 
-                            targetLocation: '/home/jenkins/.m2/'
-                        )]) {
-                    sshagent([SSH_CREDENTIALS_ID]) {
-                        try {
-                            sh '''
-                                etc/jenkins/continuous.sh
-                            '''
-                        } catch(e) {
-                            currentBuild.result = "FAILED"
-                            notifyFailed()
-                            throw e
+            try {
+                steps {
+                    configFileProvider([
+                            configFile(
+                                fileId: SETTINGS_XML_ID,
+                                targetLocation: '/home/jenkins/.m2/settings.xml'
+                            ), 
+                            configFile(
+                                fileId: SETTINGS_SEC_XML_ID, 
+                                targetLocation: '/home/jenkins/.m2/'
+                            )]) {
+                        sshagent([SSH_CREDENTIALS_ID]) {
+                            sh 'etc/jenkins/continuous.sh'
                         }
                     }
+                    junit '**/target/surefire-reports/*.xml'
+                    recordIssues(tools: [spotBugs(useRankAsPriority: true)])
                 }
-                junit '**/target/surefire-reports/*.xml'
-                recordIssues(tools: [spotBugs(useRankAsPriority: true)])
+            } catch(e) {
+                currentBuild.result = "FAILED"
+                notifyFailed()
+                throw e
             }
         }
       
