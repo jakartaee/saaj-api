@@ -61,7 +61,7 @@ pipeline {
             }
         }
         // Perform release
-        stage('Release') {
+        stage('Build') {
             steps {
                 configFileProvider([
                         configFile(
@@ -73,16 +73,14 @@ pipeline {
                             targetLocation: '/home/jenkins/.m2/'
                         )]) {
                     sshagent([SSH_CREDENTIALS_ID]) {
-                        sh '''
-                            etc/jenkins/release.sh "${SPEC_VERSION}" "${NEXT_SPEC_VERSION}" \
-                                                   "${API_VERSION}" "${NEXT_API_VERSION}" \
-                                                   "${DRY_RUN}" "${OVERWRITE}"
-                        '''
+                        sh 'etc/jenkins/continuous.sh'
                     }
                 }
+                junit '**/target/surefire-reports/*.xml'
+                recordIssues(tools: [spotBugs(useRankAsPriority: true)])
             }
         }
-      
+        
     }
 
 }
