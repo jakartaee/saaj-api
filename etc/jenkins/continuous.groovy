@@ -5,7 +5,7 @@
 // http://www.eclipse.org/org/documents/edl-v10.php.
 //
 // SPDX-License-Identifier: BSD-3-Clause
-//
+
 // Job input parameters:
 //   SPEC_VERSION      - Specification version to release
 //   NEXT_SPEC_VERSION - Next specification snapshot version to set (e.g. 1.2.4-SNAPSHOT)
