@@ -9,7 +9,7 @@
  */
 
 /**
- * Defines the Jakarta SOAP with Attachments API.
+ * Jakarta SOAP with Attachments API.
  *
  * <p>
  * References in this document to SAAJ refer to the Jakarta SOAP with Attachments API unless otherwise noted.

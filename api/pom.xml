@@ -316,7 +316,7 @@
                     <groups>
                         <group>
                             <title>Jakarta SOAP with Attachments API Packages</title>
-                            <packages>javax.xml.soap</packages>
+                            <packages>javax.xml.soap*</packages>
                         </group>
                     </groups>
                     <description>Jakarta SOAP with Attachments API documentation</description>
