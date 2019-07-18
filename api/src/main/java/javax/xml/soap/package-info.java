@@ -28,7 +28,7 @@
  * </ul>
  *
  * <p>
- * References in this document to SAAJ refer to the Jakarta SOAP with Attachments API unless otherwise noted.
+ * References in this document to SAAJ refer to the Jakarta SOAP with Attachments API unless otherwise noted.<br>
  * References in this document to JAXB refer to the Jakarta XML Binding unless otherwise noted.
  *
  * <p>
