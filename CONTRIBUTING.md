@@ -12,8 +12,8 @@ Thanks for your interest in this project.
 
 ## Project description
 
-Jakarta SOAP with Attachments defines API enabling developers to produce
-and consume messages conforming to the SOAP 1.1, SOAP 1.2 and SOAP Attachments Feature.
+Jakarta SOAP with Attachments defines an API enabling developers to produce
+and consume messages conforming to the SOAP 1.1, SOAP 1.2, and SOAP Attachments Feature.
 
 * https://projects.eclipse.org/projects/ee4j.jaxws
 
