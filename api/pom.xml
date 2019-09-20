@@ -324,7 +324,12 @@
                         </Bundle-Description>
                         <Specification-Vendor>${vendor.name}</Specification-Vendor>
                         <Implementation-Build-Id>${scmBranch}-${buildNumber}, ${timestamp}</Implementation-Build-Id>
-                        <Import-Package>javax.activation;version=!,*</Import-Package>
+                        <DynamicImport-Package>org.glassfish.hk2.osgiresourcelocator</DynamicImport-Package>
+                        <Import-Package>
+                            !org.glassfish.hk2.osgiresourcelocator,
+                            javax.activation;version=!,
+                            *
+                        </Import-Package>
                     </instructions>
                 </configuration>
                 <executions>
