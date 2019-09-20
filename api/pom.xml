@@ -364,7 +364,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
-                    <doclint>all</doclint>
+                    <release>11</release>
                     <docfilessubdirs>true</docfilessubdirs>
                     <groups>
                         <group>
