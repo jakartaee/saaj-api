@@ -10,13 +10,18 @@
 
 package javax.xml.soap;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+import java.util.Iterator;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -105,6 +110,11 @@ class FactoryFinder {
             if (result != null) {
                 return (T) result;
             }
+        }
+
+        // handling Glassfish/OSGi (platform specific default)
+        if (isOsgi()) {
+            return (T) lookupUsingOSGiServiceLoader(factoryId);
         }
 
         // If not found and fallback should not be tried, return a null result.
@@ -247,6 +257,32 @@ class FactoryFinder {
             logger.log(Level.FINE, "  found {0}", value);
         } else {
             logger.log(Level.FINE, "  not found");
+        }
+    }
+
+    private static final String OSGI_SERVICE_LOADER_CLASS_NAME = "org.glassfish.hk2.osgiresourcelocator.ServiceLoader";
+
+    private static boolean isOsgi() {
+        try {
+            Class.forName(OSGI_SERVICE_LOADER_CLASS_NAME);
+            return true;
+        } catch (ClassNotFoundException ignored) {
+        }
+        return false;
+    }
+
+    private static Object lookupUsingOSGiServiceLoader(String factoryId) {
+        try {
+            // Use reflection to avoid having any dependendcy on HK2 ServiceLoader class
+            Class<?> serviceClass = Class.forName(factoryId);
+            Class<?>[] args = new Class[]{serviceClass};
+            Class<?> target = Class.forName(OSGI_SERVICE_LOADER_CLASS_NAME);
+            Method m = target.getMethod("lookupProviderInstances", Class.class);
+            Iterator<?> iter = ((Iterable) m.invoke(null, (Object[]) args)).iterator();
+            return iter.hasNext() ? iter.next() : null;
+        } catch (Exception ignored) {
+            // log and continue
+            return null;
         }
     }
 
