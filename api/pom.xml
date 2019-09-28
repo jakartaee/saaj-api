@@ -35,7 +35,7 @@
         <spec.version>1.4</spec.version>
         <new.spec.version>1.4.1</new.spec.version>
         <non.final>false</non.final>
-        <activation.version>1.2.1</activation.version>
+        <activation.version>1.2.2</activation.version>
         <legal.doc.source>${project.basedir}/..</legal.doc.source>
         <vendor.name>Eclipse Foundation</vendor.name>
     </properties>
