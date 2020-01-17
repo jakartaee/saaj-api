@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, 2019 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2017, 2020 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -14,15 +14,15 @@
  * <p>
  * References in this document to SAAJ refer to the Jakarta SOAP with Attachments API unless otherwise noted.
  */
-module java.xml.soap {
+module jakarta.xml.soap {
     requires transitive java.xml;
     requires transitive jakarta.activation;
     requires java.logging;
 
-    exports javax.xml.soap;
+    exports jakarta.xml.soap;
 
-    uses javax.xml.soap.MessageFactory;
-    uses javax.xml.soap.SAAJMetaFactory;
-    uses javax.xml.soap.SOAPConnectionFactory;
-    uses javax.xml.soap.SOAPFactory;
+    uses jakarta.xml.soap.MessageFactory;
+    uses jakarta.xml.soap.SAAJMetaFactory;
+    uses jakarta.xml.soap.SOAPConnectionFactory;
+    uses jakarta.xml.soap.SOAPFactory;
 }

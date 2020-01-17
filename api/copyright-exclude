@@ -1,4 +1,4 @@
 src/main/javadoc/doc-files/speclicense.html
-src/test/resources/javax/xml/soap/test.policy
+src/test/resources/jakarta/xml/soap/test.policy
 edl-copyright_template.txt
 copyright-exclude
