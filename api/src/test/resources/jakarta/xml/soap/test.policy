@@ -1,0 +1,18 @@
+grant {
+      // security manager
+      permission java.lang.RuntimePermission "setSecurityManager";
+
+      // writing configuration files
+      permission java.io.FilePermission "${classesDir}/-", "read, write, delete";
+
+      // reading java.home to find jdk-wide property file
+      permission java.util.PropertyPermission "java.home", "read";
+
+      // reading / modifying jdk/conf/jaxm.properties
+      permission java.io.FilePermission "${java.home}${/}-", "read, write, delete";
+
+      // reading defined system properties
+      permission java.util.PropertyPermission "jakarta.xml.soap.MessageFactory", "read";
+      permission java.util.PropertyPermission "jakarta.xml.soap.MetaFactory", "read";
+      permission java.util.PropertyPermission "jakarta.xml.soap.SAAJMetaFactory", "read";
+};
