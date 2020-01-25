@@ -36,7 +36,7 @@
         <spec.version>1.4</spec.version>
         <new.spec.version>1.4.1</new.spec.version>
         <non.final>false</non.final>
-        <activation.version>1.2.1</activation.version>
+        <activation.version>1.2.2</activation.version>
         <legal.doc.source>${project.basedir}/..</legal.doc.source>
         <vendor.name>Eclipse Foundation</vendor.name>
     </properties>
@@ -370,7 +370,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
-                    <release>11</release>
+                    <source>1.8</source>
+                    <release>8</release>
+                    <additionalOptions>
+                        <additionalOption>--frames</additionalOption>
+                    </additionalOptions>
+                    <sourceFileExcludes>
+                        <sourceFileExclude>module-info.java</sourceFileExclude>
+                    </sourceFileExcludes>
                     <notimestamp>true</notimestamp>
                     <docfilessubdirs>true</docfilessubdirs>
                     <groups>
