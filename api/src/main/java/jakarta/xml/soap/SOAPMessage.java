@@ -15,7 +15,7 @@ import java.io.IOException;
 
 import java.util.Iterator;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 
 /**
  * The root class for all SOAP messages. As transmitted on the "wire", a SOAP
@@ -277,7 +277,7 @@ public abstract class SOAPMessage {
      * the given {@code DataHandler} object.
      *
      * @param dataHandler
-     *           the {@code javax.activation.DataHandler} object that
+     *           the {@code jakarta.activation.DataHandler} object that
      *           will generate the content for this {@code SOAPMessage}
      *           object
      * @return a new {@code AttachmentPart} object that contains data
@@ -285,8 +285,8 @@ public abstract class SOAPMessage {
      * @exception IllegalArgumentException
      *               if there was a problem with the specified {@code DataHandler}
      *               object
-     * @see javax.activation.DataHandler
-     * @see javax.activation.DataContentHandler
+     * @see jakarta.activation.DataHandler
+     * @see jakarta.activation.DataContentHandler
      */
     public AttachmentPart createAttachmentPart(DataHandler dataHandler) {
         AttachmentPart attachment = createAttachmentPart();
@@ -322,8 +322,8 @@ public abstract class SOAPMessage {
      *               of the content object, or if there was no
      *               {@code DataContentHandler} object for the given
      *               content object
-     * @see javax.activation.DataHandler
-     * @see javax.activation.DataContentHandler
+     * @see jakarta.activation.DataHandler
+     * @see jakarta.activation.DataContentHandler
      */
     public AttachmentPart createAttachmentPart(
         Object content,

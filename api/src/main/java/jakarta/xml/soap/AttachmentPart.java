@@ -13,7 +13,7 @@ package jakarta.xml.soap;
 import java.io.InputStream;
 import java.util.Iterator;
 
-import javax.activation.DataHandler;
+import jakarta.activation.DataHandler;
 
 /**
  * A single attachment to a {@code SOAPMessage} object. A {@code SOAPMessage}
