@@ -328,7 +328,6 @@
                         <DynamicImport-Package>org.glassfish.hk2.osgiresourcelocator</DynamicImport-Package>
                         <Import-Package>
                             !org.glassfish.hk2.osgiresourcelocator,
-                            javax.activation;version=!,
                             *
                         </Import-Package>
                     </instructions>
@@ -383,7 +382,7 @@
                     <groups>
                         <group>
                             <title>Jakarta SOAP with Attachments API Packages</title>
-                            <packages>javax.xml.soap*</packages>
+                            <packages>jakarta.xml.soap*</packages>
                         </group>
                     </groups>
                     <description>Jakarta SOAP with Attachments API documentation</description>
