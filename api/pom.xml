@@ -290,7 +290,7 @@
                     <spec>
                         <nonFinal>${non.final}</nonFinal>
                         <jarType>api</jarType>
-                        <specVersion>${spec.version}</specVersion>
+                        <specVersion>${new.spec.version}</specVersion>
                         <specImplVersion>${project.version}</specImplVersion>
                         <apiPackage>${extension.name}</apiPackage>
                         <newSpecVersion>${new.spec.version}</newSpecVersion>
@@ -321,7 +321,7 @@
                         <Implementation-Version>${spec.implementation.version}</Implementation-Version>
                         <Specification-Version>${spec.specification.version}</Specification-Version>
                         <Bundle-Description>
-                            Jakarta SOAP with Attachments ${spec.version} API Design Specification
+                            Jakarta SOAP with Attachments ${new.spec.version} API Design Specification
                         </Bundle-Description>
                         <Specification-Vendor>${vendor.name}</Specification-Vendor>
                         <Implementation-Build-Id>${scmBranch}-${buildNumber}</Implementation-Build-Id>
