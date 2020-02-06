@@ -29,7 +29,7 @@
     <artifactId>soap-spec</artifactId>
     <packaging>pom</packaging>
     <version>2.0-SNAPSHOT</version>
-    <name>Jakarta SOAP with Attachments</name>
+    <name>Jakarta SOAP with Attachments Specification</name>
 
     <properties>
         <site.output.dir>${project.build.directory}/staging</site.output.dir>
