@@ -382,14 +382,7 @@
                             <addDefaultEntries>false</addDefaultEntries>
                         </manifest>
                     </archive>
-                    <source>1.8</source>
-                    <release>8</release>
-                    <additionalOptions>
-                        <additionalOption>--frames</additionalOption>
-                    </additionalOptions>
-                    <sourceFileExcludes>
-                        <sourceFileExclude>module-info.java</sourceFileExclude>
-                    </sourceFileExcludes>
+                    <release>11</release>
                     <notimestamp>true</notimestamp>
                     <docfilessubdirs>true</docfilessubdirs>
                     <groups>
