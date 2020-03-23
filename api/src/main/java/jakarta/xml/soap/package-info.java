@@ -60,7 +60,7 @@
  * APIs on a particular SAAJ tree to using SAAJ APIs that causes the risk of
  * invalid references.
  *
- * <h3>Discovery of SAAJ implementation</h3>
+ * <h2>Discovery of SAAJ implementation</h2>
  * <p>
  * There are several factories defined in the SAAJ API to discover and load specific implementation:
  *
