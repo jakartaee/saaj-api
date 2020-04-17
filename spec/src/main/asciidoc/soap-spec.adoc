@@ -25,5 +25,4 @@ include::license-efsl.adoc[]
 
 // == Jakarta SOAP with Attachments
 :sectnums:
-include::soap.adoc[]
 include::SOAPAttachments.adoc[]
