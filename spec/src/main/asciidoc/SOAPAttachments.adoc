@@ -139,6 +139,10 @@ image:soapatt-8.png[image]
 
 Change History
 
+=== Changes in Version 2.0
+
+Changed `javax.*` package name to `jakarta.*`.
+
 === Changes in Maintenance Release 4
 
 The fourth maintenance release of SAAJ, SAAJ
