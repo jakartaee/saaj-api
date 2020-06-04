@@ -5,10 +5,7 @@
 :sectnums:
 = Jakarta SOAP Attachments Specification, Version 2.0
 
-Copyright (c) 2017, 2020 Oracle and/or its affiliates. All rights reserved.
-
-Oracle and Java are registered trademarks of Oracle and/or its 
-affiliates. Other names may be trademarks of their respective owners. 
+Copyright (c) 2020 Eclipse Foundation.
 
 === 
 
@@ -128,8 +125,8 @@ image:soapatt-8.png[image]
 
 Abstract
 
-The SOAP with Attachments API for Java™ (SAAJ
-1.4) enables developers to produce and consume messages conforming to
+The Jakarta SOAP with Attachments API for Java (SAAJ) 
+enables developers to produce and consume messages conforming to
 the SOAP 1.1, SOAP 1.2 and SOAP Attachments Feature.
 
 In the interest of backward compatibility, SAAJ
@@ -165,7 +162,7 @@ of SAAJ implementation.
 Added support for generics where applicable.
 
 Changed MAY to MUST in
-javax.xml.soap.SOAPElements methods.
+jakarta.xml.soap.SOAPElements methods.
 
 Several corrections and clarifications have been
 made to the JavaDocs for the API.
@@ -226,7 +223,7 @@ Addition of overloaded methods which accept a
 QName instead of a Name: QName is the preferred representation of XML
 qualified names, and hence we would like to introduce overloaded methods
 in all APIs where a corresponding method was accepting a
-javax.xml.soap.Name as argument. The Name interface may be deprecated in
+jakarta.xml.soap.Name as argument. The Name interface may be deprecated in
 a future release of SAAJ in favor of QName.
 
 Clarify and correct the wording of JavaDocs and
@@ -241,7 +238,7 @@ SOAPBody, and SOAPElement. These new methods are intended for ease of
 use and to assist SAAJ users when dealing with some of the newer SOAP
 features.
 
-Making SOAPPart a javax.xml.soap.Node: The
+Making SOAPPart a jakarta.xml.soap.Node: The
 SOAPPart is also a SOAP Node.
 
 Deferred Changes: The deprecation of Name
@@ -287,11 +284,11 @@ Several corrections and clarifications have been
 made to the JavaDocs for the API.
 
 This specification has been derived from the
-_javax.XML.SOAP_ package originally defined in the JAXM 1.0
+_jakarta.XML.SOAP_ package originally defined in the JAXM 1.0
 specification. The “accepted changes,” as specified in JSR067 changelog,
 have been incorporated in this document. The key changes are as follows:
 
- _javax.xml.soap_ package was moved from the
+ _jakarta.xml.soap_ package was moved from the
 JAXM specification to this document. In the interest of consistency and
 for simplifying synchronization of specifications, this document has
 been designated as version 1.1 of the SAAJ specification. There are no
@@ -368,11 +365,11 @@ Package Overview
 image:soapatt-10.png[image]
 
 This chapter presents an overview of the SAAJ
-which consists of the single package; _javax.xml.soap_ . The intent here
+which consists of the single package; _jakarta.xml.soap_ . The intent here
 is to provide an overview of the package only, the details of which can
 be found in the following chapter.
 
-The _javax.xml.soap_ package provides the
+The _jakarta.xml.soap_ package provides the
 primary abstraction for SOAP Messages with MIME attachments. Attachments
 may be entire XML documents, XML fragments, images, text documents, or
 any other content with a valid MIME type. In addition, this package
@@ -439,11 +436,11 @@ _clearContent_ method is a helper method intended to facilitate the
 removal of all the content from an _AttachmentPart_ object while leaving
 the header information.
 
-A SAAJ 1.4 implementation must support the
+A SAAJ 2.0 implementation must support the
 following MIME types. Additional MIME types may be supported using the
-_javax.activation.DataHandler_ class and the Java™ Activation Framework.
+_jakarta.activation.DataHandler_ class and the Java™ Activation Framework.
 
-=== SAAJ 1.4’s supported MIME types
+=== SAAJ 2.0’s supported MIME types
 
 === MIME Type
 
@@ -455,11 +452,11 @@ _javax.activation.DataHandler_ class and the Java™ Activation Framework.
 
  _multipart/*_
 
- _javax.mail.internet.MimeMultipart_
+ _jakarta.mail.internet.MimeMultipart_
 
  _text/xml_ or _application/xml_
 
- _javax.xml.transform.Source_
+ _jakarta.xml.transform.Source_
 
 SAAJ provides methods for setting and getting
 the Raw content of an Attachment. Methods have also been provided to get
@@ -690,7 +687,7 @@ method.
 
 image:soapatt-12.png[image]
 
-Package: javax.xml.soap
+Package: jakarta.xml.soap
 
 image:soapatt-13.png[image]
 
@@ -702,9 +699,9 @@ Description
 
 Provides the API for creating and building SOAP
 messages. This package is defined in the _SOAP with Attachments API for
-Java_ _TM_ _(SAAJ) 1.4_ specification.
+Java_ _TM_ _(SAAJ) 2.0_ specification.
 
-The API in the _javax.xml.soap_ package allows
+The API in the _jakarta.xml.soap_ package allows
 you to do the following:
 
 create a point-to-point connection to a
@@ -728,7 +725,7 @@ extract content from a SOAP message
 
 send a SOAP request-response message
 
-In addition the APIs in the _javax.xml.soap_
+In addition the APIs in the _jakarta.xml.soap_
 package extend their counterparts in the _org.w3c.dom_ package. This
 means that the _SOAPPart_ of a _SOAPMessage_ is also a DOM Level 2
 _Document_ , and can be manipulated as such by applications, tools and
@@ -776,7 +773,7 @@ First three define newInstance() method which
 uses a common lookup procedure to determine the implementation class:
 
 Checks if a system property with the same
-name as the factory class is set (e.g. javax.xml.soap.SOAPFactory). If
+name as the factory class is set (e.g. jakarta.xml.soap.SOAPFactory). If
 such property exists then its value is assumed to be the fully qualified
 name of the implementation class. This phase of the look up enables
 per-JVM override of the SAAJ implementation.
@@ -824,20 +821,17 @@ SOAP Messages with Attachments
 
 http://www.w3.org/TR/soap12-af
 
-JavaBeans™ Activation Framework Version 1.0a
+Jakarta Activation 2.0
 
+https://jakarta.ee/specifications/activation/2.0/
 
-_http://www.oracle.com/technetwork/articles/java/index-135046.html_
+Java™ API for XML Processing Version 1.6
 
-Java™ API for XML Processing Version 1.2
-Final Release
+https://jcp.org/en/jsr/detail?id=206#orig
 
- _https://jcp.org/en/jsr/detail?id=63_
+Jakarta SOAP Attachments 2.0
 
-Java™ API for XML Messaging Version 1.1 Final
-Release
-
- _https://jcp.org/en/jsr/detail?id=67_
+https://jakarta.ee/specifications/soap-attachments/2.0/
 
 WS-I Attachments Profile 1.0
 
