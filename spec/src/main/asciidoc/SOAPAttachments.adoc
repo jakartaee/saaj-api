@@ -5,12 +5,6 @@
 :sectnums:
 = Jakarta SOAP Attachments Specification, Version 2.0
 
-Copyright (c) 2020 Eclipse Foundation.
-
-=== 
-
-image:soapatt-3.png[image]
-
 Status
 
 image:soapatt-4.png[image]
@@ -44,6 +38,9 @@ The proposed changes specified in the fourth
 JSR067 changelog have been incorporated into this document as SAAJ
 Specification, version 1.4.
 
+Starting with Jakarta SOAP Attachments Specification, Version 2.0, 
+this document is developed under https://jakarta.ee/about/jesp/[Jakarta EE Specification Process]
+
 === 
 
 image:soapatt-5.png[image]
@@ -51,7 +48,7 @@ image:soapatt-5.png[image]
 Acknowledgements
 
 This maintenance release is the product of
-collaborative work within the Java community.
+collaborative work within the Jakarta EE Working Group.
 
 === 
 
@@ -125,9 +122,8 @@ image:soapatt-8.png[image]
 
 Abstract
 
-The Jakarta SOAP with Attachments API for Java (SAAJ) 
-enables developers to produce and consume messages conforming to
-the SOAP 1.1, SOAP 1.2 and SOAP Attachments Feature.
+Jakarta SOAP with Attachments defines API enabling developers to produce 
+and consume messages conforming to the SOAP 1.1, SOAP 1.2 and SOAP Attachments Feature.
 
 In the interest of backward compatibility, SAAJ
 continues to offer a client-side communication capability enabling
