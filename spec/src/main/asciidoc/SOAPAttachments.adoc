@@ -48,7 +48,7 @@ image:soapatt-5.png[image]
 Acknowledgements
 
 This maintenance release is the product of
-collaborative work within the Jakarta EE Working Group.
+collaborative work within the Java community.
 
 === 
 
@@ -436,11 +436,11 @@ _clearContent_ method is a helper method intended to facilitate the
 removal of all the content from an _AttachmentPart_ object while leaving
 the header information.
 
-A SAAJ 2.0 implementation must support the
+A SAAJ implementation must support the
 following MIME types. Additional MIME types may be supported using the
 _jakarta.activation.DataHandler_ class and the Java™ Activation Framework.
 
-=== SAAJ 2.0’s supported MIME types
+=== SAAJ supported MIME types
 
 === MIME Type
 
@@ -456,7 +456,7 @@ _jakarta.activation.DataHandler_ class and the Java™ Activation Framework.
 
  _text/xml_ or _application/xml_
 
- _jakarta.xml.transform.Source_
+ _javax.xml.transform.Source_
 
 SAAJ provides methods for setting and getting
 the Raw content of an Attachment. Methods have also been provided to get
