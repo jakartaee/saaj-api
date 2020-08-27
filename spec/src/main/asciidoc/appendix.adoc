@@ -163,11 +163,11 @@ of messages that contain a fault.
 made to the JavaDocs for the API.
 
 This specification has been derived from the
-`jakarta.XML.SOAP` package originally defined in the JAXM 1.0
+`javax.xml.soap` package originally defined in the JAXM 1.0
 specification. The "accepted changes," as specified in JSR067 changelog,
 have been incorporated in this document. The key changes are as follows:
 
-* `jakarta.xml.soap` package was moved from the
+* `javax.xml.soap` package was moved from the
 JAXM specification to this document. In the interest of consistency and
 for simplifying synchronization of specifications, this document has
 been designated as version 1.1 of the SAAJ specification. There are no
