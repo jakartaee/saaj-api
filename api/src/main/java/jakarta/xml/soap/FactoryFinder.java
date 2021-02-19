@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2020 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -114,7 +114,10 @@ class FactoryFinder {
 
         // handling Glassfish/OSGi (platform specific default)
         if (isOsgi()) {
-            return (T) lookupUsingOSGiServiceLoader(factoryId);
+            Object result = lookupUsingOSGiServiceLoader(factoryId);
+            if (result != null) {
+                return (T) result;
+            }
         }
 
         // If not found and fallback should not be tried, return a null result.
