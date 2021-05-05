@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2020 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -41,7 +41,7 @@ package jakarta.xml.soap;
  * It is possible to change the body or header of a {@code SOAPEnvelope}
  * object by retrieving the current one, deleting it, and then adding
  * a new body or header. The {@code jakarta.xml.soap.Node} method
- * {@code deleteNode} deletes the XML element (node) on which it is
+ * {@code detachNode} deletes the XML element (node) on which it is
  * called.  For example, the following line of code deletes the
  * {@code SOAPBody} object that is retrieved by the method {@code getBody}.
  * <pre>{@code
@@ -99,6 +99,22 @@ public interface SOAPEnvelope extends SOAPElement {
      */
     public abstract Name createName(String localName, String prefix,
                                     String uri)
+        throws SOAPException;
+
+    /**
+     * Creates a new {@code Name} object initialized with the
+     * given local name and namespace prefix.
+     * <P>
+     * This factory method creates {@code Name} objects for use in
+     * the SOAP/XML document.
+     *
+     * @param localName a {@code String} giving the local name
+     * @param uri a {@code String} giving the URI of the namespace
+     * @return a {@code Name} object initialized with the given
+     *         local name, namespace prefix, and namespace URI
+     * @throws SOAPException if there is a SOAP error
+     */
+    public abstract Name createName(String localName, String uri)
         throws SOAPException;
 
     /**
