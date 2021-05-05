@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2020 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -50,11 +50,8 @@ package jakarta.xml.soap;
 */
 public abstract class SAAJMetaFactory {
 
-    private static final String META_FACTORY_DEPRECATED_CLASS_PROPERTY =
-            "jakarta.xml.soap.MetaFactory";
-
     private static final String DEFAULT_META_FACTORY_CLASS =
-            "com.sun.xml.internal.messaging.saaj.soap.SAAJMetaFactoryImpl";
+            "com.sun.xml.messaging.saaj.soap.SAAJMetaFactoryImpl";
 
     /**
      * Creates a new instance of a concrete {@code SAAJMetaFactory} object.
@@ -74,8 +71,7 @@ public abstract class SAAJMetaFactory {
                 return FactoryFinder.find(
                         SAAJMetaFactory.class,
                         DEFAULT_META_FACTORY_CLASS,
-                        true,
-                        META_FACTORY_DEPRECATED_CLASS_PROPERTY);
+                        true);
 
             } catch (Exception e) {
                 throw new SOAPException(

@@ -10,12 +10,8 @@
 
 package jakarta.xml.soap;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.lang.reflect.Method;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -53,9 +49,6 @@ class FactoryFinder {
      *         may not be {@code null}
      *
      * @param factoryClass          factory abstract class or interface to be found
-     * @param deprecatedFactoryId   deprecated name of a factory; it is used for types
-     *                              where class name is different from a name
-     *                              being searched (in previous spec).
      * @param defaultClassName      the implementation class name, which is
      *                              to be used only if nothing else
      *                              is found; {@code null} to indicate
@@ -67,13 +60,13 @@ class FactoryFinder {
     @SuppressWarnings("unchecked")
     static <T> T find(Class<T> factoryClass,
                       String defaultClassName,
-                      boolean tryFallback, String deprecatedFactoryId) throws SOAPException {
+                      boolean tryFallback) throws SOAPException {
 
         ClassLoader tccl = ServiceLoaderUtil.contextClassLoader(EXCEPTION_HANDLER);
         String factoryId = factoryClass.getName();
 
         // Use the system property first
-        String className = fromSystemProperty(factoryId, deprecatedFactoryId);
+        String className = fromSystemProperty(factoryId);
         if (className != null) {
             Object result = newInstance(className, defaultClassName, tccl);
             if (result != null) {
@@ -82,7 +75,7 @@ class FactoryFinder {
         }
 
         // try to read from $java.home/lib/jaxm.properties
-        className = fromJDKProperties(factoryId, deprecatedFactoryId);
+        className = fromJDKProperties(factoryId);
         if (className != null) {
             Object result = newInstance(className, defaultClassName, tccl);
             if (result != null) {
@@ -97,19 +90,6 @@ class FactoryFinder {
                 EXCEPTION_HANDLER);
         if (factory != null) {
             return factory;
-        }
-
-        // try to find services in CLASSPATH
-        className = fromMetaInfServices(deprecatedFactoryId, tccl);
-        if (className != null) {
-            logger.log(Level.WARNING,
-                    "Using deprecated META-INF/services mechanism with non-standard property: {0}. " +
-                            "Property {1} should be used instead.",
-                    new Object[]{deprecatedFactoryId, factoryId});
-            Object result = newInstance(className, defaultClassName, tccl);
-            if (result != null) {
-                return (T) result;
-            }
         }
 
         // handling Glassfish/OSGi (platform specific default)
@@ -133,13 +113,6 @@ class FactoryFinder {
         return (T) newInstance(defaultClassName, defaultClassName, tccl);
     }
 
-    // in most cases there is no deprecated factory id
-    static <T> T find(Class<T> factoryClass,
-                      String defaultClassName,
-                      boolean tryFallback) throws SOAPException {
-        return find(factoryClass, defaultClassName, tryFallback, null);
-    }
-
     private static Object newInstance(String className, String defaultClassName, ClassLoader tccl) throws SOAPException {
         return ServiceLoaderUtil.newInstance(
                 className,
@@ -148,38 +121,7 @@ class FactoryFinder {
                 EXCEPTION_HANDLER);
     }
 
-    // used only for deprecatedFactoryId;
-    // proper factoryId searched by java.util.ServiceLoader
-    private static String fromMetaInfServices(String deprecatedFactoryId, ClassLoader tccl) {
-        String serviceId = "META-INF/services/" + deprecatedFactoryId;
-        logger.log(Level.FINE, "Checking deprecated {0} resource", serviceId);
-
-        try (InputStream is =
-                     tccl == null ?
-                             ClassLoader.getSystemResourceAsStream(serviceId)
-                             :
-                             tccl.getResourceAsStream(serviceId)) {
-
-            if (is != null) {
-                String factoryClassName;
-                try (InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
-                     BufferedReader rd = new BufferedReader(isr)) {
-                    factoryClassName = rd.readLine();
-                }
-
-                logFound(factoryClassName);
-                if (factoryClassName != null && !"".equals(factoryClassName)) {
-                    return factoryClassName;
-                }
-            }
-
-        } catch (IOException e) {
-            // keep original behavior
-        }
-        return null;
-    }
-
-    private static String fromJDKProperties(String factoryId, String deprecatedFactoryId) {
+    private static String fromJDKProperties(String factoryId) {
         Path path = null;
         try {
             String JAVA_HOME = getSystemProperty("java.home");
@@ -206,18 +148,6 @@ class FactoryFinder {
                     return factoryClassName;
                 }
 
-                // deprecated property
-                if (deprecatedFactoryId != null) {
-                    logger.log(Level.FINE, "Checking deprecated property {0}", deprecatedFactoryId);
-                    factoryClassName = props.getProperty(deprecatedFactoryId);
-                    logFound(factoryClassName);
-                    if (factoryClassName != null) {
-                        logger.log(Level.WARNING,
-                                "Using non-standard property: {0}. Property {1} should be used instead.",
-                                new Object[]{deprecatedFactoryId, factoryId});
-                        return factoryClassName;
-                    }
-                }
             }
         } catch (Exception ignored) {
             logger.log(Level.SEVERE, "Error reading SAAJ configuration from ["  + path +
@@ -226,19 +156,10 @@ class FactoryFinder {
         return null;
     }
 
-    private static String fromSystemProperty(String factoryId, String deprecatedFactoryId) {
+    private static String fromSystemProperty(String factoryId) {
         String systemProp = getSystemProperty(factoryId);
         if (systemProp != null) {
             return systemProp;
-        }
-        if (deprecatedFactoryId != null) {
-            systemProp = getSystemProperty(deprecatedFactoryId);
-            if (systemProp != null) {
-                logger.log(Level.WARNING,
-                        "Using non-standard property: {0}. Property {1} should be used instead.",
-                        new Object[] {deprecatedFactoryId, factoryId});
-                return systemProp;
-            }
         }
         return null;
     }
