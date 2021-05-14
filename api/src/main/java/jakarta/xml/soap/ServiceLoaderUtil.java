@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, 2020 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2016, 2021 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -52,7 +52,7 @@ class ServiceLoaderUtil {
         }
     }
 
-    static Class nullSafeLoadClass(String className, ClassLoader classLoader) throws ClassNotFoundException {
+    static Class<?> nullSafeLoadClass(String className, ClassLoader classLoader) throws ClassNotFoundException {
         if (classLoader == null) {
             return Class.forName(className);
         } else {
@@ -67,7 +67,7 @@ class ServiceLoaderUtil {
                                                     String defaultImplClassName, ClassLoader classLoader,
                                                     final ExceptionHandler<T> handler) throws T {
         try {
-            return safeLoadClass(className, defaultImplClassName, classLoader).newInstance();
+            return safeLoadClass(className, defaultImplClassName, classLoader).getConstructor().newInstance();
         } catch (ClassNotFoundException x) {
             throw handler.createException(x, "Provider " + className + " not found");
         } catch (Exception x) {

@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2020 Contributors to the Eclipse Foundation
+// Copyright (c) 2020, 2021 Contributors to the Eclipse Foundation
 //
 
 :sectnums:
@@ -367,12 +367,11 @@ the name, and the URI of the namespace.
 Name objects are created using the
 `SOAPEnvelope.createName` method.
 
-=== SOAPFactory & SOAPElementFactory
+=== SOAPFactory
 
-These factories are intended primarily for
+This factory is intended primarily for
 the use of application components or tools that require the capability
-of inserting XML fragments into a SOAP Message. In SAAJ v1.1, the
-`SOAPElementFactory` has been deprecated in favor of `SOAPFactory` which
+of inserting XML fragments into a SOAP Message. `SOAPFactory`
 serves as a super factory for the creation of `SOAPElement` , `Name` ,
 and `Detail` objects.
 
