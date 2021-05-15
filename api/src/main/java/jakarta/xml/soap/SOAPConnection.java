@@ -43,9 +43,7 @@ public abstract class SOAPConnection {
      * @param to an {@code Object} that identifies
      *         where the message should be sent. It is required to
      *         support Objects of type
-     *         {@code java.lang.String},
-     *         {@code java.net.URL}, and when JAXM is present
-     *         {@code javax.xml.messaging.URLEndpoint}
+     *         {@code java.lang.String} and {@code java.net.URL}
      *
      * @return the {@code SOAPMessage} object that is the response to the
      *         message that was sent
