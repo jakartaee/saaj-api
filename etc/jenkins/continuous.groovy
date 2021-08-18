@@ -22,7 +22,7 @@
 //   GPG_CREDENTIALS_ID  - Jenkins ID of GPG credentials (stored as KEYRING variable)
 
 pipeline {
-    
+
     agent any
 
     tools {
@@ -65,11 +65,11 @@ pipeline {
                     sh 'etc/jenkins/continuous.sh'
                 }
                 junit '**/target/surefire-reports/*.xml'
-		jacoco()
-		recordIssues(tools: [java(), javaDoc(), spotBugs(useRankAsPriority: true)])
+		jacoco sourceInclusionPattern: '**/*.java'
+		recordIssues(tools: [spotBugs(useRankAsPriority: true), java(), javaDoc()])
             }
         }
-        
+
     }
 
 }
