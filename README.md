@@ -6,9 +6,11 @@
 [//]: # "  "
 [//]: # " SPDX-License-Identifier: BSD-3-Clause "
 
-[![Build Status](https://travis-ci.com/eclipse-ee4j/saaj-api.svg?branch=master)](https://travis-ci.com/eclipse-ee4j/saaj-api)
-
 # Jakarta SOAP with Attachments
+
+[![Build Status](https://github.com/eclipse-ee4j/saaj-api/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/eclipse-ee4j/saaj-api/actions/workflows/maven.yml?branch=master)
+[![Jakarta Staging (Snapshots)](https://img.shields.io/nexus/s/https/jakarta.oss.sonatype.org/jakarta.xml.soap/jakarta.xml.soap-api.svg)](https://jakarta.oss.sonatype.org/content/repositories/staging/jakarta/xml/soap/jakarta.xml.soap-api/)
+
 
 Jakarta SOAP with Attachments defines an API enabling developers to produce
 and consume messages conforming to the SOAP 1.1, SOAP 1.2, and SOAP Attachments Feature.
@@ -40,4 +42,3 @@ the license text included in every source file.
 
 We use [contribution policy](CONTRIBUTING.md), which means we can only accept contributions under
 the terms of [Eclipse Contributor Agreement](http://www.eclipse.org/legal/ECA.php).
-
