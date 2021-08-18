@@ -34,4 +34,4 @@ jobs:
         distribution: 'zulu'
         java-version: ${{ matrix.java_version }}
     - name: Verify
-      run: mvn -B -V -U -C -Poss-release -Pstaging clean verify -Dgpg.skip=true
+      run: cd api && mvn -B -V -U -C -Poss-release -Pstaging clean verify -Dgpg.skip=true
