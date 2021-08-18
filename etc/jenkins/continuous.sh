@@ -14,4 +14,4 @@
 echo '-[ Jakarta SOAP with Attachments Specification Build ]--------------------------'
 (cd spec && mvn -U -C -B -Dstatus='DRAFT' clean install)
 echo '-[ Jakarta SOAP with Attachments API Build ]------------------------------------'
-(cd api && mvn -U -C -B -V -Psnapshots,oss-release clean deploy spotbugs:spotbugs)
+(cd api && mvn -U -C -B -V -Psnapshots,staging,oss-release,coverage clean deploy)
