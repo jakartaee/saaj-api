@@ -65,6 +65,7 @@ pipeline {
                     sh 'etc/jenkins/continuous.sh'
                 }
                 junit '**/target/surefire-reports/*.xml'
+		jacoco()
 		recordIssues(tools: [java(), javaDoc(), spotBugs(useRankAsPriority: true)])
             }
         }
