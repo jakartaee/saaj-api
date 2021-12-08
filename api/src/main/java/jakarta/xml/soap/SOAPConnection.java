@@ -76,6 +76,7 @@ public abstract class SOAPConnection {
      *
      * @param timeout an {@code int} that specifies the timeout value to be used in milliseconds
      * @throws IllegalArgumentException if the timeout parameter is negative
+     * @since 3.0
      */
     public abstract void setConnectTimeout(int timeout);
 
@@ -84,6 +85,7 @@ public abstract class SOAPConnection {
      * {@code 0} implies infinite timeout
      *
      * @return an {@code int} that indicates the connect timeout value in milliseconds
+     * @since 3.0
      */
     public abstract int getConnectTimeout();
 
@@ -93,6 +95,7 @@ public abstract class SOAPConnection {
      *
      * @param timeout an {@code int} that specifies the timeout value to be used in milliseconds
      * @throws IllegalArgumentException if the timeout parameter is negative
+     * @since 3.0
      */
     public abstract void setReadTimeout(int timeout);
 
@@ -101,6 +104,7 @@ public abstract class SOAPConnection {
      * {@code 0} implies infinite timeout
      *
      * @return an {@code int} that indicates the read timeout value in milliseconds
+     * @since 3.0
      */
     public abstract int getReadTimeout();
 
