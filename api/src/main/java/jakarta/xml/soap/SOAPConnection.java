@@ -11,6 +11,8 @@
 package jakarta.xml.soap;
 
 
+import java.net.URLConnection;
+
 /**
  * A point-to-point connection that a client can use for sending messages
  * directly to a remote party (represented by a URL, for instance).
@@ -34,6 +36,9 @@ package jakarta.xml.soap;
  * @since 1.6
  */
 public abstract class SOAPConnection {
+
+    private int readTimeout;
+    private int connectTimeout;
 
     /**
      * Sends the given message to the specified endpoint and blocks until
@@ -78,7 +83,12 @@ public abstract class SOAPConnection {
      * @throws IllegalArgumentException if the timeout parameter is negative
      * @since 3.0
      */
-    public abstract void setConnectTimeout(int timeout);
+    public void setConnectTimeout(int timeout) {
+        if (timeout < 0) {
+            throw new IllegalArgumentException();
+        }
+        connectTimeout = timeout;
+    }
 
     /**
      * Returns setting for connect timeout.
@@ -87,7 +97,9 @@ public abstract class SOAPConnection {
      * @return an {@code int} that indicates the connect timeout value in milliseconds
      * @since 3.0
      */
-    public abstract int getConnectTimeout();
+    public int getConnectTimeout() {
+        return connectTimeout;
+    }
 
     /**
      * Sets the read timeout to a specified timeout, in milliseconds.
@@ -97,7 +109,13 @@ public abstract class SOAPConnection {
      * @throws IllegalArgumentException if the timeout parameter is negative
      * @since 3.0
      */
-    public abstract void setReadTimeout(int timeout);
+    public void setReadTimeout(int timeout) {
+        if (timeout < 0) {
+            throw new IllegalArgumentException();
+        }
+        readTimeout = timeout;
+
+    }
 
     /**
      * Returns setting for read timeout.
@@ -106,7 +124,9 @@ public abstract class SOAPConnection {
      * @return an {@code int} that indicates the read timeout value in milliseconds
      * @since 3.0
      */
-    public abstract int getReadTimeout();
+    public int getReadTimeout() {
+        return readTimeout;
+    }
 
     /**
      * Closes this {@code SOAPConnection} object.
