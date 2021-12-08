@@ -169,6 +169,7 @@ public abstract class SOAPFactory {
      *@param faultCode the FaultCode for the fault
      *@return a {@code SOAPFault} object
      *@throws SOAPException if there is a SOAP error
+     *@throws IllegalArgumentException if {@code reasonText} or {@code faultCode} is null
      *@since 1.6, SAAJ 1.3
      */
     public abstract SOAPFault createFault(String reasonText, QName faultCode) throws SOAPException;
