@@ -85,7 +85,7 @@ public abstract class SOAPConnection {
      */
     public void setConnectTimeout(int timeout) {
         if (timeout < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("timeout can not be negative");
         }
         connectTimeout = timeout;
     }
@@ -111,7 +111,7 @@ public abstract class SOAPConnection {
      */
     public void setReadTimeout(int timeout) {
         if (timeout < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("timeout can not be negative");
         }
         readTimeout = timeout;
 
