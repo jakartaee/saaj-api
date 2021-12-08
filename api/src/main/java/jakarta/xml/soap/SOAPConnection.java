@@ -33,7 +33,7 @@ package jakarta.xml.soap;
  *
  * @since 1.6
  */
-public abstract class SOAPConnection {
+public abstract class SOAPConnection implements AutoCloseable {
 
     /**
      * Sends the given message to the specified endpoint and blocks until
