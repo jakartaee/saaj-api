@@ -11,6 +11,8 @@
 package jakarta.xml.soap;
 
 
+import java.net.URLConnection;
+
 /**
  * A point-to-point connection that a client can use for sending messages
  * directly to a remote party (represented by a URL, for instance).
@@ -34,6 +36,9 @@ package jakarta.xml.soap;
  * @since 1.6
  */
 public abstract class SOAPConnection implements AutoCloseable {
+
+    private int readTimeout;
+    private int connectTimeout;
 
     /**
      * Sends the given message to the specified endpoint and blocks until
@@ -68,6 +73,59 @@ public abstract class SOAPConnection implements AutoCloseable {
     public SOAPMessage get(Object to)
                                 throws SOAPException {
         throw new UnsupportedOperationException("All subclasses of SOAPConnection must override get()");
+    }
+
+    /**
+     * Sets the read timeout to a specified timeout, in milliseconds.
+     * A timeout of zero is interpreted as an infinite timeout.
+     *
+     * @param timeout an {@code int} that specifies the timeout value to be used in milliseconds
+     * @throws IllegalArgumentException if the timeout parameter is negative
+     * @since 3.0
+     */
+    public void setConnectTimeout(int timeout) {
+        if (timeout < 0) {
+            throw new IllegalArgumentException("timeout can not be negative");
+        }
+        connectTimeout = timeout;
+    }
+
+    /**
+     * Returns setting for connect timeout.
+     * {@code 0} implies infinite timeout
+     *
+     * @return an {@code int} that indicates the connect timeout value in milliseconds
+     * @since 3.0
+     */
+    public int getConnectTimeout() {
+        return connectTimeout;
+    }
+
+    /**
+     * Sets the read timeout to a specified timeout, in milliseconds.
+     * A timeout of zero is interpreted as an infinite timeout.
+     *
+     * @param timeout an {@code int} that specifies the timeout value to be used in milliseconds
+     * @throws IllegalArgumentException if the timeout parameter is negative
+     * @since 3.0
+     */
+    public void setReadTimeout(int timeout) {
+        if (timeout < 0) {
+            throw new IllegalArgumentException("timeout can not be negative");
+        }
+        readTimeout = timeout;
+
+    }
+
+    /**
+     * Returns setting for read timeout.
+     * {@code 0} implies infinite timeout
+     *
+     * @return an {@code int} that indicates the read timeout value in milliseconds
+     * @since 3.0
+     */
+    public int getReadTimeout() {
+        return readTimeout;
     }
 
     /**
