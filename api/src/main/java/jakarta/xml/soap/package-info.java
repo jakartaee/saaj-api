@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2005, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -78,11 +78,6 @@
  *  <li>Checks if a system property with the same name as the factory class is set (e.g.
  *  {@code jakarta.xml.soap.SOAPFactory}). If such property exists then its value is assumed to be the fully qualified
  *  name of the implementation class. This phase of the look up enables per-JVM override of the SAAJ implementation.
- *  <li>Use the configuration file "jaxm.properties". The file is in standard
- *  {@link java.util.Properties} format and typically located in the
- *  {@code conf} directory of the Java installation. It contains the fully qualified
- *  name of the implementation class with the key being the system property
- *  defined above.
  *  <li> Use the service-provider loading facilities, defined by the {@link java.util.ServiceLoader} class,
  *  to attempt to locate and load an implementation of the service using the {@linkplain
  *  java.util.ServiceLoader#load(java.lang.Class) default loading mechanism}.
