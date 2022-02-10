@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -27,7 +27,13 @@ public abstract class SOAPConnectionFactory {
      * object. The default is the point-to-point SOAP connection.
      */
     private static final String DEFAULT_SOAP_CONNECTION_FACTORY
-            = "com.sun.xml.internal.messaging.saaj.client.p2p.HttpSOAPConnectionFactory";
+            = "com.sun.xml.messaging.saaj.client.p2p.HttpSOAPConnectionFactory";
+
+    /**
+     * Default constructor.
+     */
+    protected SOAPConnectionFactory() {
+    }
 
     /**
      * Creates an instance of the default

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -39,7 +39,7 @@ public interface SOAPHeaderElement extends SOAPElement {
      *
      * @see #getActor
      */
-    public void setActor(String actorURI);
+    void setActor(String actorURI);
 
     /**
      * Sets the {@code Role} associated with this {@code SOAPHeaderElement}
@@ -54,7 +54,7 @@ public interface SOAPHeaderElement extends SOAPElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public void setRole(String uri) throws SOAPException;
+    void setRole(String uri) throws SOAPException;
 
     /**
      * Returns the uri of the <i>actor</i> attribute of this
@@ -65,7 +65,7 @@ public interface SOAPHeaderElement extends SOAPElement {
      * @return  a {@code String} giving the URI of the actor
      * @see #setActor
      */
-    public String getActor();
+    String getActor();
 
     /**
      * Returns the value of the <i>Role</i> attribute of this
@@ -78,7 +78,7 @@ public interface SOAPHeaderElement extends SOAPElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public String getRole();
+    String getRole();
 
     /**
      * Sets the mustUnderstand attribute for this {@code SOAPHeaderElement}
@@ -97,7 +97,7 @@ public interface SOAPHeaderElement extends SOAPElement {
      * @see #getMustUnderstand
      * @see #setRelay
      */
-    public void setMustUnderstand(boolean mustUnderstand);
+    void setMustUnderstand(boolean mustUnderstand);
 
     /**
      * Returns the boolean value of the mustUnderstand attribute for this
@@ -107,7 +107,7 @@ public interface SOAPHeaderElement extends SOAPElement {
      *        {@code SOAPHeaderElement} object is turned on; {@code false}
      *         otherwise
      */
-    public boolean getMustUnderstand();
+    boolean getMustUnderstand();
 
     /**
      * Sets the <i>relay</i> attribute for this {@code SOAPHeaderElement} to be
@@ -132,7 +132,7 @@ public interface SOAPHeaderElement extends SOAPElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public void setRelay(boolean relay) throws SOAPException;
+    void setRelay(boolean relay) throws SOAPException;
 
     /**
      * Returns the boolean value of the <i>relay</i> attribute for this
@@ -149,5 +149,5 @@ public interface SOAPHeaderElement extends SOAPElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public boolean getRelay();
+    boolean getRelay();
 }

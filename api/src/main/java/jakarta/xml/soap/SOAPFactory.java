@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -36,7 +36,13 @@ public abstract class SOAPFactory {
      * Class name of default {@code SOAPFactory} implementation.
      */
     private static final String DEFAULT_SOAP_FACTORY
-            = "com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPFactory1_1Impl";
+            = "com.sun.xml.messaging.saaj.soap.ver1_1.SOAPFactory1_1Impl";
+
+    /**
+     * Default constructor.
+     */
+    protected SOAPFactory() {
+    }
 
     /**
      * Creates a {@code SOAPElement} object from an existing DOM

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -61,7 +61,7 @@ public interface Detail extends SOAPFaultElement {
      *
      * @see Detail#addDetailEntry(QName qname)
      */
-    public DetailEntry addDetailEntry(Name name) throws SOAPException;
+    DetailEntry addDetailEntry(Name name) throws SOAPException;
 
     /**
      * Creates a new {@code DetailEntry} object with the given
@@ -80,7 +80,7 @@ public interface Detail extends SOAPFaultElement {
      * @see Detail#addDetailEntry(Name name)
      * @since 1.6, SAAJ 1.3
      */
-    public DetailEntry addDetailEntry(QName qname) throws SOAPException;
+    DetailEntry addDetailEntry(QName qname) throws SOAPException;
 
     /**
      * Gets an Iterator over all of the {@code DetailEntry}s in this {@code Detail} object.
@@ -88,5 +88,5 @@ public interface Detail extends SOAPFaultElement {
      * @return an {@code Iterator} object over the {@code DetailEntry}
      *             objects in this {@code Detail} object
      */
-    public Iterator<DetailEntry> getDetailEntries();
+    Iterator<DetailEntry> getDetailEntries();
 }

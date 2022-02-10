@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -34,7 +34,7 @@ public interface Node extends org.w3c.dom.Node {
      *          {@code Text} object if such a child exists;
      *          {@code null} otherwise.
      */
-    public String getValue();
+    String getValue();
 
     /**
      * If this is a Text node then this method will set its value,
@@ -51,7 +51,7 @@ public interface Node extends org.w3c.dom.Node {
      *
      * @since 1.6, SAAJ 1.2
      */
-    public void setValue(String value);
+    void setValue(String value);
 
     /**
      * Sets the parent of this {@code Node} object to the given
@@ -64,7 +64,7 @@ public interface Node extends org.w3c.dom.Node {
      *                          parent to the given element
      * @see #getParentElement
      */
-    public void setParentElement(SOAPElement parent) throws SOAPException;
+    void setParentElement(SOAPElement parent) throws SOAPException;
 
     /**
      * Returns the parent element of this {@code Node} object.
@@ -79,12 +79,12 @@ public interface Node extends org.w3c.dom.Node {
      *            kept in memory
      * @see #setParentElement
      */
-    public SOAPElement getParentElement();
+    SOAPElement getParentElement();
 
     /**
      * Removes this {@code Node} object from the tree.
      */
-    public void detachNode();
+    void detachNode();
 
     /**
      * Notifies the implementation that this {@code Node}
@@ -95,6 +95,6 @@ public interface Node extends org.w3c.dom.Node {
      * Calling the method {@code recycleNode} implies that the method
      * {@code detachNode} has been called previously.
      */
-    public void recycleNode();
+    void recycleNode();
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -65,7 +65,7 @@ public interface SOAPHeader extends SOAPElement {
      * @exception SOAPException if a SOAP error occurs
      * @see SOAPHeader#addHeaderElement(javax.xml.namespace.QName)
      */
-    public SOAPHeaderElement addHeaderElement(Name name)
+    SOAPHeaderElement addHeaderElement(Name name)
         throws SOAPException;
 
     /**
@@ -80,7 +80,7 @@ public interface SOAPHeader extends SOAPElement {
      * @see SOAPHeader#addHeaderElement(Name)
      * @since 1.6, SAAJ 1.3
      */
-    public SOAPHeaderElement addHeaderElement(QName qname)
+    SOAPHeaderElement addHeaderElement(QName qname)
         throws SOAPException;
 
     /**
@@ -103,7 +103,7 @@ public interface SOAPHeader extends SOAPElement {
      *
      * @since 1.6, SAAJ 1.2
      */
-    public Iterator<SOAPHeaderElement> examineMustUnderstandHeaderElements(String actor);
+    Iterator<SOAPHeaderElement> examineMustUnderstandHeaderElements(String actor);
 
     /**
      * Returns an {@code Iterator} over all the {@code SOAPHeaderElement} objects
@@ -129,7 +129,7 @@ public interface SOAPHeader extends SOAPElement {
      * @see #extractHeaderElements
      * @see SOAPConstants#URI_SOAP_ACTOR_NEXT
      */
-    public Iterator<SOAPHeaderElement> examineHeaderElements(String actor);
+    Iterator<SOAPHeaderElement> examineHeaderElements(String actor);
 
     /**
      * Returns an {@code Iterator} over all the {@code SOAPHeaderElement} objects
@@ -153,7 +153,7 @@ public interface SOAPHeader extends SOAPElement {
      * @see #examineHeaderElements
      * @see SOAPConstants#URI_SOAP_ACTOR_NEXT
      */
-    public Iterator<SOAPHeaderElement> extractHeaderElements(String actor);
+    Iterator<SOAPHeaderElement> extractHeaderElements(String actor);
 
     /**
      * Creates a new NotUnderstood {@code SOAPHeaderElement} object initialized
@@ -168,7 +168,7 @@ public interface SOAPHeader extends SOAPElement {
      * @exception UnsupportedOperationException if this is a SOAP 1.1 Header.
      * @since 1.6, SAAJ 1.3
      */
-    public SOAPHeaderElement addNotUnderstoodHeaderElement(QName name)
+    SOAPHeaderElement addNotUnderstoodHeaderElement(QName name)
         throws SOAPException;
 
     /**
@@ -184,7 +184,7 @@ public interface SOAPHeader extends SOAPElement {
      * @exception SOAPException if a SOAP error occurs.
      * @since 1.6, SAAJ 1.3
      */
-    public SOAPHeaderElement addUpgradeHeaderElement(Iterator<String> supportedSOAPURIs)
+    SOAPHeaderElement addUpgradeHeaderElement(Iterator<String> supportedSOAPURIs)
         throws SOAPException;
 
     /**
@@ -199,7 +199,7 @@ public interface SOAPHeader extends SOAPElement {
      * @exception SOAPException if a SOAP error occurs.
      * @since 1.6, SAAJ 1.3
      */
-    public SOAPHeaderElement addUpgradeHeaderElement(String[] supportedSoapUris)
+    SOAPHeaderElement addUpgradeHeaderElement(String[] supportedSoapUris)
         throws SOAPException;
 
     /**
@@ -214,7 +214,7 @@ public interface SOAPHeader extends SOAPElement {
      * @exception SOAPException if a SOAP error occurs.
      * @since 1.6, SAAJ 1.3
      */
-    public SOAPHeaderElement addUpgradeHeaderElement(String supportedSoapUri)
+    SOAPHeaderElement addUpgradeHeaderElement(String supportedSoapUri)
         throws SOAPException;
 
     /**
@@ -228,7 +228,7 @@ public interface SOAPHeader extends SOAPElement {
      *
      * @since 1.6, SAAJ 1.2
      */
-    public Iterator<SOAPHeaderElement> examineAllHeaderElements();
+    Iterator<SOAPHeaderElement> examineAllHeaderElements();
 
     /**
      * Returns an {@code Iterator} over all the {@code SOAPHeaderElement} objects
@@ -243,6 +243,6 @@ public interface SOAPHeader extends SOAPElement {
      *
      * @since 1.6, SAAJ 1.2
      */
-    public Iterator<SOAPHeaderElement> extractAllHeaderElements();
+    Iterator<SOAPHeaderElement> extractAllHeaderElements();
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -102,6 +102,13 @@ import jakarta.activation.DataHandler;
  */
 
 public abstract class AttachmentPart {
+
+    /**
+     * Default constructor.
+     */
+    protected AttachmentPart() {
+    }
+
     /**
      * Returns the number of bytes in this {@code AttachmentPart}
      * object.

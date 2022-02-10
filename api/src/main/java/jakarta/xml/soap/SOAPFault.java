@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -61,7 +61,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.2
      */
-    public void setFaultCode(Name faultCodeQName) throws SOAPException;
+    void setFaultCode(Name faultCodeQName) throws SOAPException;
 
     /**
      * Sets this {@code SOAPFault} object with the given fault code.
@@ -80,7 +80,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public void setFaultCode(QName faultCodeQName) throws SOAPException;
+    void setFaultCode(QName faultCodeQName) throws SOAPException;
 
     /**
      * Sets this {@code SOAPFault} object with the give fault code.
@@ -100,7 +100,7 @@ public interface SOAPFault extends SOAPBodyElement {
      * @exception SOAPException if there was an error in adding the
      *            {@code faultCode} to the underlying XML tree.
      */
-    public void setFaultCode(String faultCode) throws SOAPException;
+    void setFaultCode(String faultCode) throws SOAPException;
 
     /**
      * Gets the mandatory SOAP 1.1 fault code for this
@@ -117,7 +117,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.2
      */
-    public Name getFaultCodeAsName();
+    Name getFaultCodeAsName();
 
 
     /**
@@ -130,7 +130,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public QName getFaultCodeAsQName();
+    QName getFaultCodeAsQName();
 
     /**
      * Gets the Subcodes for this {@code SOAPFault} as an iterator over
@@ -147,7 +147,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public Iterator<QName> getFaultSubcodes();
+    Iterator<QName> getFaultSubcodes();
 
     /**
      * Removes any Subcodes that may be contained by this
@@ -160,7 +160,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public void removeAllFaultSubcodes();
+    void removeAllFaultSubcodes();
 
     /**
      * Adds a Subcode to the end of the sequence of Subcodes contained by this
@@ -176,7 +176,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public void appendFaultSubcode(QName subcode) throws SOAPException;
+    void appendFaultSubcode(QName subcode) throws SOAPException;
 
     /**
      * Gets the fault code for this {@code SOAPFault} object.
@@ -185,7 +185,7 @@ public interface SOAPFault extends SOAPBodyElement {
      * @see #getFaultCodeAsName
      * @see #setFaultCode
      */
-    public String getFaultCode();
+    String getFaultCode();
 
     /**
      * Sets this {@code SOAPFault} object with the given fault actor.
@@ -203,7 +203,7 @@ public interface SOAPFault extends SOAPBodyElement {
      * @exception SOAPException if there was an error in adding the
      *            {@code faultActor} to the underlying XML tree.
      */
-    public void setFaultActor(String faultActor) throws SOAPException;
+    void setFaultActor(String faultActor) throws SOAPException;
 
     /**
      * Gets the fault actor for this {@code SOAPFault} object.
@@ -215,7 +215,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *         that caused this {@code SOAPFault} object
      * @see #setFaultActor
      */
-    public String getFaultActor();
+    String getFaultActor();
 
     /**
      * Sets the fault string for this {@code SOAPFault} object
@@ -235,7 +235,7 @@ public interface SOAPFault extends SOAPBodyElement {
      * @exception SOAPException if there was an error in adding the
      *            {@code faultString} to the underlying XML tree.
      */
-    public void setFaultString(String faultString) throws SOAPException;
+    void setFaultString(String faultString) throws SOAPException;
 
     /**
      * Sets the fault string for this {@code SOAPFault} object
@@ -259,7 +259,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.2
      */
-    public void setFaultString(String faultString, Locale locale)
+    void setFaultString(String faultString, Locale locale)
         throws SOAPException;
 
     /**
@@ -281,7 +281,7 @@ public interface SOAPFault extends SOAPBodyElement {
      * @see #setFaultString(String)
      * @see #setFaultString(String, Locale)
      */
-    public String getFaultString();
+    String getFaultString();
 
     /**
      * Gets the locale of the fault string for this {@code SOAPFault}
@@ -304,7 +304,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.2
      */
-    public Locale getFaultStringLocale();
+    Locale getFaultStringLocale();
 
     /**
      * Returns true if this {@code SOAPFault} has a {@code Detail}
@@ -316,7 +316,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public boolean hasDetail();
+    boolean hasDetail();
 
     /**
      * Returns the optional detail element for this {@code SOAPFault}
@@ -330,7 +330,7 @@ public interface SOAPFault extends SOAPBodyElement {
      * @return a {@code Detail} object with application-specific
      *         error information if present, null otherwise
      */
-    public Detail getDetail();
+    Detail getDetail();
 
     /**
      * Creates an optional {@code Detail} object and sets it as the
@@ -347,7 +347,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *            {@code SOAPFault} object already contains a
      *            valid {@code Detail} object
      */
-    public Detail addDetail() throws SOAPException;
+    Detail addDetail() throws SOAPException;
 
     /**
      * Returns an {@code Iterator} over a distinct sequence of
@@ -366,7 +366,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public Iterator<Locale> getFaultReasonLocales() throws SOAPException;
+    Iterator<Locale> getFaultReasonLocales() throws SOAPException;
 
     /**
      * Returns an {@code Iterator} over a sequence of
@@ -382,7 +382,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public Iterator<String> getFaultReasonTexts() throws SOAPException;
+    Iterator<String> getFaultReasonTexts() throws SOAPException;
 
     /**
      * Returns the Reason Text associated with the given {@code Locale}.
@@ -403,7 +403,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public String getFaultReasonText(Locale locale) throws SOAPException;
+    String getFaultReasonText(Locale locale) throws SOAPException;
 
     /**
      * Appends or replaces a Reason Text item containing the specified
@@ -430,7 +430,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public void addFaultReasonText(String text, java.util.Locale locale)
+    void addFaultReasonText(String text, java.util.Locale locale)
         throws SOAPException;
 
     /**
@@ -446,7 +446,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public String getFaultNode();
+    String getFaultNode();
 
     /**
      * Creates or replaces any existing Node element value for
@@ -463,7 +463,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public void setFaultNode(String uri) throws SOAPException;
+    void setFaultNode(String uri) throws SOAPException;
 
     /**
      * Returns the optional Role element value for this
@@ -478,7 +478,7 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public String getFaultRole();
+    String getFaultRole();
 
     /**
      * Creates or replaces any existing Role element value for
@@ -495,6 +495,6 @@ public interface SOAPFault extends SOAPBodyElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public void setFaultRole(String uri) throws SOAPException;
+    void setFaultRole(String uri) throws SOAPException;
 
 }

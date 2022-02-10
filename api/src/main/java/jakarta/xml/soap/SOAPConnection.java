@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -39,6 +39,12 @@ public abstract class SOAPConnection implements AutoCloseable {
 
     private int readTimeout;
     private int connectTimeout;
+
+    /**
+     * Default constructor.
+     */
+    protected SOAPConnection() {
+    }
 
     /**
      * Sends the given message to the specified endpoint and blocks until

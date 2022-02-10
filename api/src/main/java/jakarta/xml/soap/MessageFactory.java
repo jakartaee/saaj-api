@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -54,7 +54,13 @@ import java.io.InputStream;
 public abstract class MessageFactory {
 
     private static final String DEFAULT_MESSAGE_FACTORY
-        = "com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl";
+        = "com.sun.xml.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl";
+
+    /**
+     * Default constructor.
+     */
+    protected MessageFactory() {
+    }
 
     /**
      * Creates a new {@code MessageFactory} object that is an instance
@@ -74,7 +80,7 @@ public abstract class MessageFactory {
 
 
         try {
-            MessageFactory factory = (MessageFactory) FactoryFinder.find(
+            MessageFactory factory = FactoryFinder.find(
                     MessageFactory.class,
                     DEFAULT_MESSAGE_FACTORY,
                     false);
