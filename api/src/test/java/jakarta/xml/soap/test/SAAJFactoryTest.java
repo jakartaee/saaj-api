@@ -30,18 +30,11 @@ import static junit.framework.TestCase.assertTrue;
 
 /*
  * test for JDK-8131334: SAAJ Plugability Layer: using java.util.ServiceLoader
- *
- * There are unsafe scenarios not to be run within the build (modifying jdk files).
- * To run those, following needs to be done:
- *   1. allow java to write into $JAVA_HOME/conf: mkdir $JAVA_HOME/conf; chmod a+rw $JAVA_HOME/conf
- *   2. use "runUnsafe" property: mvn clean test -DrunUnsafe=true
  */
 @RunWith(Parameterized.class)
 public class SAAJFactoryTest {
 
     static final Logger logger = Logger.getLogger(SAAJFactoryTest.class.getName());
-
-    static final Boolean skipUnsafe = !Boolean.getBoolean("runUnsafe");
 
     // test configuration ------------------------------------------
 
@@ -55,10 +48,6 @@ public class SAAJFactoryTest {
     // configuration to be created by the test
     static Path providersDir = Paths.get(classesDir, "META-INF", "services");
     static Path providersFile = providersDir.resolve("jakarta.xml.soap.MessageFactory");
-
-    // configuration to be created by the test
-    static Path jdkDir = Paths.get(System.getProperty("java.home"), "conf");
-    static Path jdkFile = jdkDir.resolve("jaxm.properties");
 
     // test instance -----------------------------------------------
 
@@ -74,22 +63,16 @@ public class SAAJFactoryTest {
     public static Collection<?> configurations() {
         return Arrays.asList(new Object[][]{
                 // see SAAJFactoryTest constructor signature for paremeters meaning ...
-                {null, "com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl", jakarta.xml.soap.SOAPException.class, "scenario2", null, null},
-                {"saaj.factory.Valid", "saaj.factory.Valid", null, "scenario5", null, null},
-                {"saaj.factory.NonExisting SAAJFactoryTest", null, jakarta.xml.soap.SOAPException.class, "scenario6", null, null},
-                {"saaj.factory.Invalid SAAJFactoryTest", null, jakarta.xml.soap.SOAPException.class, "scenario7", null, null},
-                {null, "saaj.factory.Valid", null, "scenario8", null, "saaj.factory.Valid"},
-                {null, "saaj.factory.Valid", null, "scenario9", null, "saaj.factory.Valid"},
-                {null, null, jakarta.xml.soap.SOAPException.class, "scenario10", null, "saaj.factory.NonExisting"},
-                {null, null, jakarta.xml.soap.SOAPException.class, "scenario11", null, "saaj.factory.Invalid"},
-                {null, "com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl", jakarta.xml.soap.SOAPException.class, "scenario12", null, null},
-                {null, "saaj.factory.Valid", null, "scenario15", null, "saaj.factory.Valid"},
-
-                {null, "saaj.factory.Valid", null, "unsafe-scenario1", "saaj.factory.Valid", null},
-                {null, null, jakarta.xml.soap.SOAPException.class, "unsafe-scenario3", "non.existing.FactoryClass", null},
-                {null, null, jakarta.xml.soap.SOAPException.class, "unsafe-scenario4", "saaj.factory.Invalid", null},
-                {"saaj.factory.Valid3", "saaj.factory.Valid3", null, "unsafe-scenario13", "saaj.factory.Valid", "saaj.factory.Valid2"},
-                {null, "saaj.factory.Valid", null, "unsafe-scenario14", "saaj.factory.Valid", "saaj.factory.Valid2"}
+                {null, "com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl", jakarta.xml.soap.SOAPException.class, "scenario2", null},
+                {"saaj.factory.Valid", "saaj.factory.Valid", null, "scenario5", null},
+                {"saaj.factory.NonExisting SAAJFactoryTest", null, jakarta.xml.soap.SOAPException.class, "scenario6", null},
+                {"saaj.factory.Invalid SAAJFactoryTest", null, jakarta.xml.soap.SOAPException.class, "scenario7", null},
+                {null, "saaj.factory.Valid", null, "scenario8", "saaj.factory.Valid"},
+                {null, "saaj.factory.Valid", null, "scenario9", "saaj.factory.Valid"},
+                {null, null, jakarta.xml.soap.SOAPException.class, "scenario10", "saaj.factory.NonExisting"},
+                {null, null, jakarta.xml.soap.SOAPException.class, "scenario11", "saaj.factory.Invalid"},
+                {null, "com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl", jakarta.xml.soap.SOAPException.class, "scenario12", null},
+                {null, "saaj.factory.Valid", null, "scenario15", "saaj.factory.Valid"},
         });
     }
 
@@ -97,7 +80,6 @@ public class SAAJFactoryTest {
                            String expectedFactory,
                            Class<?> expectedException,
                            String scenario,
-                           String jdkConfClass,
                            String spiClass) {
 
         // ensure setup may be done ...
@@ -113,22 +95,11 @@ public class SAAJFactoryTest {
         this.expectedFactory = expectedFactory;
         this.expectedException = expectedException;
 
-        if (skipUnsafe && scenario.startsWith("unsafe")) {
-            log("Skipping unsafe scenario:" + scenario);
-            return;
-        }
-
-        prepare(jdkConfClass, spiClass);
+        prepare(spiClass);
     }
 
     @Test
     public void testFactoryDiscovery() throws IOException {
-
-        if (skipUnsafe && scenario.startsWith("unsafe")) {
-            log("Skipping unsafe scenario:" + scenario);
-            return;
-        }
-
         logConfigurations();
         try {
             MessageFactory factory = factory();
@@ -152,8 +123,6 @@ public class SAAJFactoryTest {
             cleanResource(providersFile);
             cleanResource(providersDir);
 
-            // unsafe; not running:
-            cleanResource(jdkFile);
             System.setSecurityManager(null);
         }
     }
@@ -192,21 +161,12 @@ public class SAAJFactoryTest {
         }
     }
 
-    private void prepare(String propertiesClassName, String providerClassName) {
-
+    private void prepare(String providerClassName) {
         try {
             log("providerClassName = " + providerClassName);
-            log("propertiesClassName = " + propertiesClassName);
 
             setupFile(providersFile, providersDir, providerClassName);
 
-
-            // unsafe; not running:
-            if (propertiesClassName != null) {
-                setupFile(jdkFile, jdkDir, "jakarta.xml.soap.MessageFactory=" + propertiesClassName);
-            } else {
-                cleanResource(jdkFile);
-            }
 
             log(" SETUP OK.");
 
@@ -218,7 +178,6 @@ public class SAAJFactoryTest {
 
     private void logConfigurations() throws IOException {
         logFile(providersFile);
-        logFile(jdkFile);
     }
 
     private void logFile(Path path) throws IOException {

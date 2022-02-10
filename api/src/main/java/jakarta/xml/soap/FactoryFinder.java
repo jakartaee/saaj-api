@@ -101,15 +101,6 @@ class FactoryFinder {
             }
         }
 
-        // try to read from $java.home/lib/jaxm.properties
-        className = fromJDKProperties(factoryId);
-        if (className != null) {
-            Object result = newInstance(className, defaultClassName, tccl);
-            if (result != null) {
-                return (T) result;
-            }
-        }
-
         // standard services: java.util.ServiceLoader
         T factory = ServiceLoaderUtil.firstByServiceLoader(
                 factoryClass,
@@ -157,41 +148,6 @@ class FactoryFinder {
             );
         }
         return newInstance;
-    }
-
-    private static String fromJDKProperties(String factoryId) {
-        Path path = null;
-        try {
-            String JAVA_HOME = getSystemProperty("java.home");
-            path = Paths.get(JAVA_HOME, "conf", "jaxm.properties");
-            logger.log(Level.FINE, "Checking configuration in {0}", path);
-
-            // to ensure backwards compatibility
-            if (!Files.exists(path)) {
-                path = Paths.get(JAVA_HOME, "lib", "jaxm.properties");
-            }
-
-            logger.log(Level.FINE, "Checking configuration in {0}", path);
-            if (Files.exists(path)) {
-                Properties props = new Properties();
-                try (InputStream inputStream = Files.newInputStream(path)) {
-                    props.load(inputStream);
-                }
-
-                // standard property
-                logger.log(Level.FINE, "Checking property {0}", factoryId);
-                String factoryClassName = props.getProperty(factoryId);
-                logFound(factoryClassName);
-                if (factoryClassName != null) {
-                    return factoryClassName;
-                }
-
-            }
-        } catch (Exception ignored) {
-            logger.log(Level.SEVERE, "Error reading SAAJ configuration from ["  + path +
-                    "] file. Check it is accessible and has correct format.", ignored);
-        }
-        return null;
     }
 
     private static String fromSystemProperty(String factoryId) {

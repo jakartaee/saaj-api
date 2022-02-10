@@ -30,11 +30,6 @@ package jakarta.xml.soap;
 *  to be the fully qualified name of the implementation class. This property, defined by previous specifications
  * (up to 1.3), is still supported, but it is strongly recommended to migrate to new property
  * {@code jakarta.xml.soap.SAAJMetaFactory}.
-*  <li>Use the configuration file "jaxm.properties". The file is in standard {@link java.util.Properties} format
-*  and typically located in the {@code conf} directory of the Java installation. It contains the fully qualified
-*  name of the implementation class with key {@code jakarta.xml.soap.SAAJMetaFactory}. If no such property is defined,
- * again, property with key {@code jakarta.xml.soap.MetaFactory} is used. It is strongly recommended to migrate to
- * new property {@code jakarta.xml.soap.SAAJMetaFactory}.
 *  <li> Use the service-provider loading facilities, defined by the {@link java.util.ServiceLoader} class,
 *  to attempt to locate and load an implementation of the service using the {@linkplain
 *  java.util.ServiceLoader#load(java.lang.Class) default loading mechanism}.
