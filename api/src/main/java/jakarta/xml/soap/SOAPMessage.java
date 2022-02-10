@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -111,6 +111,12 @@ public abstract class SOAPMessage {
      */
     public static final String WRITE_XML_DECLARATION =
         "jakarta.xml.soap.write-xml-declaration";
+
+    /**
+     * Default constructor.
+     */
+    protected SOAPMessage() {
+    }
 
     /**
      * Sets the description of this {@code SOAPMessage} object's

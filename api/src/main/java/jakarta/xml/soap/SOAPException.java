@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -28,6 +28,12 @@ package jakarta.xml.soap;
  * @since 1.6
  */
 public class SOAPException extends Exception {
+
+    private static final long serialVersionUID = -2347183911432431333L;
+
+    /**
+     * The cause.
+     */
     private Throwable cause;
 
     /**

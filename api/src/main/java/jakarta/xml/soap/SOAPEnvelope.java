@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -97,8 +97,8 @@ public interface SOAPEnvelope extends SOAPElement {
      *         local name, namespace prefix, and namespace URI
      * @throws SOAPException if there is a SOAP error
      */
-    public abstract Name createName(String localName, String prefix,
-                                    String uri)
+    Name createName(String localName, String prefix,
+                    String uri)
         throws SOAPException;
 
     /**
@@ -114,7 +114,7 @@ public interface SOAPEnvelope extends SOAPElement {
      *         local name, namespace prefix, and namespace URI
      * @throws SOAPException if there is a SOAP error
      */
-    public abstract Name createName(String localName, String uri)
+    Name createName(String localName, String uri)
         throws SOAPException;
 
     /**
@@ -129,7 +129,7 @@ public interface SOAPEnvelope extends SOAPElement {
      *         local name
      * @throws SOAPException if there is a SOAP error
      */
-    public abstract Name createName(String localName)
+    Name createName(String localName)
         throws SOAPException;
 
     /**
@@ -148,7 +148,7 @@ public interface SOAPEnvelope extends SOAPElement {
      * @exception SOAPException if there is a problem obtaining the
      *            {@code SOAPHeader} object
      */
-    public SOAPHeader getHeader() throws SOAPException;
+    SOAPHeader getHeader() throws SOAPException;
 
     /**
      * Returns the {@code SOAPBody} object associated with this
@@ -167,7 +167,7 @@ public interface SOAPEnvelope extends SOAPElement {
      * @exception SOAPException if there is a problem obtaining the
      *            {@code SOAPBody} object
      */
-    public SOAPBody getBody() throws SOAPException;
+    SOAPBody getBody() throws SOAPException;
     /**
      * Creates a {@code SOAPHeader} object and sets it as the
      * {@code SOAPHeader} object for this {@code SOAPEnvelope}
@@ -183,7 +183,7 @@ public interface SOAPEnvelope extends SOAPElement {
      *            {@code SOAPEnvelope} object already contains a
      *            valid {@code SOAPHeader} object
      */
-    public SOAPHeader addHeader() throws SOAPException;
+    SOAPHeader addHeader() throws SOAPException;
     /**
      * Creates a {@code SOAPBody} object and sets it as the
      * {@code SOAPBody} object for this {@code SOAPEnvelope}
@@ -199,5 +199,5 @@ public interface SOAPEnvelope extends SOAPElement {
      *            {@code SOAPEnvelope} object already contains a
      *            valid {@code SOAPBody} object
      */
-    public SOAPBody addBody() throws SOAPException;
+    SOAPBody addBody() throws SOAPException;
 }

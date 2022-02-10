@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -52,6 +52,12 @@ import javax.xml.transform.Source;
  * @since 1.6
  */
 public abstract class SOAPPart implements org.w3c.dom.Document, Node {
+
+    /**
+     * Default constructor.
+     */
+    protected SOAPPart() {
+    }
 
     /**
      * Gets the {@code SOAPEnvelope} object associated with this

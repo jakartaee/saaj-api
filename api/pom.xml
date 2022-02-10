@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2013, 2021 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2013, 2022 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -30,11 +30,12 @@
         <spotbugs.exclude>${project.basedir}/../etc/spotbugs-exclude.xml</spotbugs.exclude>
         <spotbugs.skip>false</spotbugs.skip>
         <spotbugs.threshold>Low</spotbugs.threshold>
-        <spotbugs.version>4.3.0</spotbugs.version>
+        <spotbugs.version>4.5.3.0</spotbugs.version>
 
+        <maven.compiler.release>11</maven.compiler.release>
         <extension.name>jakarta.xml.soap</extension.name>
-        <spec.version>1.4</spec.version>
-        <new.spec.version>2.0</new.spec.version>
+        <spec.version>2.0</spec.version>
+        <new.spec.version>3.0</new.spec.version>
         <non.final>false</non.final>
         <activation.version>2.1.0</activation.version>
         <legal.doc.source>${project.basedir}/..</legal.doc.source>
@@ -110,7 +111,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>buildnumber-maven-plugin</artifactId>
-                    <version>1.4</version>
+                    <version>3.0.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.glassfish.copyright</groupId>
@@ -125,7 +126,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.1</version>
+                    <version>3.9.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.glassfish.build</groupId>
@@ -135,7 +136,7 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>5.1.1</version>
+                    <version>5.1.4</version>
                     <configuration>
                         <instructions>
                             <_noextraheaders>true</_noextraheaders>
@@ -145,7 +146,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>3.2.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -155,7 +156,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.3.1</version>
                 </plugin>
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
@@ -169,7 +170,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -261,27 +262,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <release>9</release>
                     <compilerArgs>
                         <arg>-Xlint:all</arg>
+                        <arg>-Werror</arg>
+                        <arg>-Xdoclint:all,-missing</arg>
                     </compilerArgs>
                     <showDeprecation>true</showDeprecation>
                     <showWarnings>true</showWarnings>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>base-compile</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <release>8</release>
-                            <excludes>
-                                <exclude>module-info.java</exclude>
-                            </excludes>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.glassfish.copyright</groupId>
@@ -336,6 +324,12 @@
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
                 <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultEntries>false</addDefaultEntries>
+                        </manifest>
+                    </archive>
+                    <niceManifest>true</niceManifest>
                     <instructions>
                         <Bundle-Version>${spec.bundle.version}</Bundle-Version>
                         <Bundle-SymbolicName>${spec.bundle.symbolic-name}</Bundle-SymbolicName>
@@ -400,9 +394,10 @@
                             <addDefaultEntries>false</addDefaultEntries>
                         </manifest>
                     </archive>
-                    <release>11</release>
                     <notimestamp>true</notimestamp>
                     <docfilessubdirs>true</docfilessubdirs>
+                    <quiet>true</quiet>
+                    <failOnWarnings>true</failOnWarnings>
                     <groups>
                         <group>
                             <title>Jakarta SOAP with Attachments API Packages</title>
@@ -425,18 +420,10 @@ Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <configuration>
-                    <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
                     <fork>true</fork>
                     <excludeFilterFile>${spotbugs.exclude}</excludeFilterFile>
                     <failThreshold>High</failThreshold>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
 

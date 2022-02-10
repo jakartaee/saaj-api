@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2016, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -71,7 +71,7 @@ public class SAAJFactoryTest {
 
 
     @Parameterized.Parameters
-    public static Collection configurations() {
+    public static Collection<?> configurations() {
         return Arrays.asList(new Object[][]{
                 // see SAAJFactoryTest constructor signature for paremeters meaning ...
                 {null, "com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl", jakarta.xml.soap.SOAPException.class, "scenario2", null, null},

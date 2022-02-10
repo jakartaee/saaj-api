@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -45,7 +45,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      *                          {@code SOAPElement} object
      * @see SOAPElement#addChildElement(javax.xml.namespace.QName)
      */
-    public SOAPElement addChildElement(Name name) throws SOAPException;
+    SOAPElement addChildElement(Name name) throws SOAPException;
 
     /**
      * Creates a new {@code SOAPElement} object initialized with the given
@@ -62,7 +62,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @see SOAPElement#addChildElement(Name)
      * @since 1.6, SAAJ 1.3
      */
-    public SOAPElement addChildElement(QName qname) throws SOAPException;
+    SOAPElement addChildElement(QName qname) throws SOAPException;
 
     /**
      * Creates a new {@code SOAPElement} object initialized with the
@@ -76,7 +76,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @exception SOAPException if there is an error in creating the
      *                          {@code SOAPElement} object
      */
-    public SOAPElement addChildElement(String localName) throws SOAPException;
+    SOAPElement addChildElement(String localName) throws SOAPException;
 
     /**
      * Creates a new {@code SOAPElement} object initialized with the
@@ -93,7 +93,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      *         context of this {@code SOAPElement} or  if there is an error in creating the
      *                          {@code SOAPElement} object
      */
-    public SOAPElement addChildElement(String localName, String prefix)
+    SOAPElement addChildElement(String localName, String prefix)
         throws SOAPException;
 
     /**
@@ -112,8 +112,8 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @exception SOAPException if there is an error in creating the
      *                          {@code SOAPElement} object
      */
-    public SOAPElement addChildElement(String localName, String prefix,
-                                       String uri)
+    SOAPElement addChildElement(String localName, String prefix,
+                                String uri)
         throws SOAPException;
 
     /**
@@ -147,7 +147,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @return an instance representing the new SOAP element that was
      *         actually added to the tree.
      */
-    public SOAPElement addChildElement(SOAPElement element)
+    SOAPElement addChildElement(SOAPElement element)
         throws SOAPException;
 
     /**
@@ -161,7 +161,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      *
      * @since 1.6, SAAJ 1.2
      */
-    public abstract void removeContents();
+    void removeContents();
 
     /**
      * Creates a new {@code Text} object initialized with the given
@@ -176,7 +176,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      *                      attach it as a child to this
      *                      {@code SOAPElement}
      */
-    public SOAPElement addTextNode(String text) throws SOAPException;
+    SOAPElement addTextNode(String text) throws SOAPException;
 
     /**
      * Adds an attribute with the specified name and value to this
@@ -193,7 +193,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
                                  {@code name} on this SOAPElement.
      * @see SOAPElement#addAttribute(javax.xml.namespace.QName, String)
      */
-    public SOAPElement addAttribute(Name name, String value)
+    SOAPElement addAttribute(Name name, String value)
         throws SOAPException;
 
     /**
@@ -212,7 +212,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @see SOAPElement#addAttribute(Name, String)
      * @since 1.6, SAAJ 1.3
      */
-    public SOAPElement addAttribute(QName qname, String value)
+    SOAPElement addAttribute(QName qname, String value)
         throws SOAPException;
 
     /**
@@ -227,7 +227,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @exception SOAPException if there is an error in creating the
      *                          namespace
      */
-    public SOAPElement addNamespaceDeclaration(String prefix, String uri)
+    SOAPElement addNamespaceDeclaration(String prefix, String uri)
         throws SOAPException;
 
     /**
@@ -238,7 +238,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      *         attribute, Null if there is no such attribute
      * @see SOAPElement#getAttributeValue(javax.xml.namespace.QName)
      */
-    public String getAttributeValue(Name name);
+    String getAttributeValue(Name name);
 
     /**
      * Returns the value of the attribute with the specified qname.
@@ -249,7 +249,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @see SOAPElement#getAttributeValue(Name)
      * @since 1.6, SAAJ 1.3
      */
-    public String getAttributeValue(QName qname);
+    String getAttributeValue(QName qname);
 
     /**
      * Returns an {@code Iterator} over all of the attribute
@@ -262,7 +262,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @see SOAPElement#getAllAttributesAsQNames()
      * @return an iterator over the names of the attributes
      */
-    public Iterator<Name> getAllAttributes();
+    Iterator<Name> getAllAttributes();
 
     /**
      * Returns an {@code Iterator} over all of the attributes
@@ -275,7 +275,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @see SOAPElement#getAllAttributes()
      * @since 1.6, SAAJ 1.3
      */
-    public Iterator<QName> getAllAttributesAsQNames();
+    Iterator<QName> getAllAttributesAsQNames();
 
 
     /**
@@ -286,7 +286,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @return a {@code String} with the uri of the namespace that has
      *        the given prefix
      */
-    public String getNamespaceURI(String prefix);
+    String getNamespaceURI(String prefix);
 
     /**
      * Returns an {@code Iterator} over the namespace prefix
@@ -297,7 +297,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @return an iterator over the namespace prefixes in this
      *         {@code SOAPElement} object
      */
-    public Iterator<String> getNamespacePrefixes();
+    Iterator<String> getNamespacePrefixes();
 
     /**
      * Returns an {@code Iterator} over the namespace prefix
@@ -310,7 +310,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      *
      * @since 1.6, SAAJ 1.2
      */
-    public Iterator<String> getVisibleNamespacePrefixes();
+    Iterator<String> getVisibleNamespacePrefixes();
 
     /**
      * Creates a {@code QName} whose namespace URI is the one associated
@@ -336,7 +336,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public QName createQName(String localName, String prefix)
+    QName createQName(String localName, String prefix)
         throws SOAPException;
     /**
      * Returns the name of this {@code SOAPElement} object.
@@ -344,7 +344,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @return a {@code Name} object with the name of this
      *         {@code SOAPElement} object
      */
-    public Name getElementName();
+    Name getElementName();
 
     /**
      * Returns the qname of this {@code SOAPElement} object.
@@ -354,7 +354,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @see SOAPElement#getElementName()
      * @since 1.6, SAAJ 1.3
      */
-    public QName getElementQName();
+    QName getElementQName();
 
     /**
     * Changes the name of this {@code Element} to {@code newName} if
@@ -374,7 +374,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
     *
     * @since 1.6, SAAJ 1.3
     */
-   public SOAPElement setElementQName(QName newName) throws SOAPException;
+    SOAPElement setElementQName(QName newName) throws SOAPException;
 
    /**
      * Removes the attribute with the specified name.
@@ -385,7 +385,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      *         removed successfully; {@code false} if it was not
      * @see SOAPElement#removeAttribute(javax.xml.namespace.QName)
      */
-    public boolean removeAttribute(Name name);
+   boolean removeAttribute(Name name);
 
     /**
      * Removes the attribute with the specified qname.
@@ -397,7 +397,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @see SOAPElement#removeAttribute(Name)
      * @since 1.6, SAAJ 1.3
      */
-    public boolean removeAttribute(QName qname);
+    boolean removeAttribute(QName qname);
 
     /**
      * Removes the namespace declaration corresponding to the given prefix.
@@ -407,7 +407,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @return {@code true} if the namespace declaration was
      *         removed successfully; {@code false} if it was not
      */
-    public boolean removeNamespaceDeclaration(String prefix);
+    boolean removeNamespaceDeclaration(String prefix);
 
     /**
      * Returns an {@code Iterator} over all the immediate child
@@ -429,7 +429,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @return an iterator with the content of this {@code SOAPElement}
      *         object
      */
-    public Iterator<Node> getChildElements();
+    Iterator<Node> getChildElements();
 
     /**
      * Returns an {@code Iterator} over all the immediate child
@@ -456,7 +456,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      *         specified name
      * @see SOAPElement#getChildElements(javax.xml.namespace.QName)
      */
-    public Iterator<Node> getChildElements(Name name);
+    Iterator<Node> getChildElements(Name name);
 
     /**
      * Returns an {@code Iterator} over all the immediate child
@@ -484,7 +484,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @see SOAPElement#getChildElements(Name)
      * @since 1.6, SAAJ 1.3
      */
-    public Iterator<Node> getChildElements(QName qname);
+    Iterator<Node> getChildElements(QName qname);
 
     /**
      * Sets the encoding style for this {@code SOAPElement} object
@@ -497,7 +497,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      * @exception SOAPException if setting the encodingStyle is invalid for this SOAPElement.
      * @see #getEncodingStyle
      */
-    public void setEncodingStyle(String encodingStyle)
+    void setEncodingStyle(String encodingStyle)
         throws SOAPException;
     /**
      * Returns the encoding style for this {@code SOAPElement} object.
@@ -506,5 +506,5 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
      *
      * @see #setEncodingStyle
      */
-    public String getEncodingStyle();
+    String getEncodingStyle();
 }

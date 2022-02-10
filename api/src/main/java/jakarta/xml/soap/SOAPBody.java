@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -45,7 +45,7 @@ public interface SOAPBody extends SOAPElement {
      * @return the new {@code SOAPFault} object
      * @exception SOAPException if there is a SOAP error
      */
-    public SOAPFault addFault() throws SOAPException;
+    SOAPFault addFault() throws SOAPException;
 
 
     /**
@@ -78,7 +78,7 @@ public interface SOAPBody extends SOAPElement {
      * @see SOAPFault#setFaultString
      * @since 1.6, SAAJ 1.2
      */
-    public SOAPFault addFault(Name faultCode, String faultString, Locale locale) throws SOAPException;
+    SOAPFault addFault(Name faultCode, String faultString, Locale locale) throws SOAPException;
 
     /**
      * Creates a new {@code SOAPFault} object and adds it to this
@@ -115,7 +115,7 @@ public interface SOAPBody extends SOAPElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public SOAPFault addFault(QName faultCode, String faultString, Locale locale)
+    SOAPFault addFault(QName faultCode, String faultString, Locale locale)
         throws SOAPException;
 
     /**
@@ -152,7 +152,7 @@ public interface SOAPBody extends SOAPElement {
      * @see SOAPFault#setFaultString
      * @since 1.6, SAAJ 1.2
      */
-    public SOAPFault addFault(Name faultCode, String faultString)
+    SOAPFault addFault(Name faultCode, String faultString)
         throws SOAPException;
 
     /**
@@ -190,7 +190,7 @@ public interface SOAPBody extends SOAPElement {
      * @see SOAPBody#addFault(Name faultCode, String faultString)
      * @since 1.6, SAAJ 1.3
      */
-    public SOAPFault addFault(QName faultCode, String faultString)
+    SOAPFault addFault(QName faultCode, String faultString)
         throws SOAPException;
 
     /**
@@ -201,7 +201,7 @@ public interface SOAPBody extends SOAPElement {
      *         in this {@code SOAPBody} object; {@code false}
      *         otherwise
      */
-    public boolean hasFault();
+    boolean hasFault();
 
     /**
      * Returns the {@code SOAPFault} object in this {@code SOAPBody}
@@ -210,7 +210,7 @@ public interface SOAPBody extends SOAPElement {
      * @return the {@code SOAPFault} object in this {@code SOAPBody}
      *         object if present, null otherwise.
      */
-    public SOAPFault getFault();
+    SOAPFault getFault();
 
     /**
      * Creates a new {@code SOAPBodyElement} object with the specified
@@ -224,7 +224,7 @@ public interface SOAPBody extends SOAPElement {
      *                if a SOAP error occurs
      * @see SOAPBody#addBodyElement(javax.xml.namespace.QName)
      */
-    public SOAPBodyElement addBodyElement(Name name) throws SOAPException;
+    SOAPBodyElement addBodyElement(Name name) throws SOAPException;
 
 
     /**
@@ -240,7 +240,7 @@ public interface SOAPBody extends SOAPElement {
      * @see SOAPBody#addBodyElement(Name)
      * @since 1.6, SAAJ 1.3
      */
-    public SOAPBodyElement addBodyElement(QName qname) throws SOAPException;
+    SOAPBodyElement addBodyElement(QName qname) throws SOAPException;
 
     /**
      * Adds the root node of the DOM {@link org.w3c.dom.Document}
@@ -260,7 +260,7 @@ public interface SOAPBody extends SOAPElement {
      *                if the {@code Document} cannot be added
      * @since 1.6, SAAJ 1.2
      */
-    public SOAPBodyElement addDocument(org.w3c.dom.Document document)
+    SOAPBodyElement addDocument(org.w3c.dom.Document document)
         throws SOAPException;
 
     /**
@@ -278,6 +278,6 @@ public interface SOAPBody extends SOAPElement {
      *
      * @since 1.6, SAAJ 1.3
      */
-    public org.w3c.dom.Document extractContentAsDocument()
+    org.w3c.dom.Document extractContentAsDocument()
         throws SOAPException;
 }

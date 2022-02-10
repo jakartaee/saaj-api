@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -230,7 +230,7 @@ class FactoryFinder {
             return true;
         } catch (ClassNotFoundException ignored) {
             logger.log(
-                    Level.SEVERE,
+                    Level.FINER,
                     "Class " + OSGI_SERVICE_LOADER_CLASS_NAME + " cannot be loaded",
                     ignored
             );
@@ -238,20 +238,21 @@ class FactoryFinder {
         return false;
     }
 
-    private static Object lookupUsingOSGiServiceLoader(String factoryId) {
+    private static <T> T lookupUsingOSGiServiceLoader(String factoryId) {
         try {
             logger.fine("Trying to create the provider from the OSGi ServiceLoader");
             // Use reflection to avoid having any dependendcy on HK2 ServiceLoader class
             Class<?> serviceClass = Class.forName(factoryId);
-            Class<?>[] args = new Class[]{serviceClass};
+            Class<?>[] args = new Class<?>[]{serviceClass};
             Class<?> target = Class.forName(OSGI_SERVICE_LOADER_CLASS_NAME);
             Method m = target.getMethod("lookupProviderInstances", Class.class);
-            Iterator<?> iter = ((Iterable) m.invoke(null, (Object[]) args)).iterator();
+            @SuppressWarnings({"unchecked"})
+            Iterator<T> iter = ((Iterable<T>) m.invoke(null, (Object[]) args)).iterator();
             return iter.hasNext() ? iter.next() : null;
         } catch (Exception ignored) {
             // log and continue
             logger.log(
-                    Level.SEVERE,
+                    Level.FINER,
                     "Access to the system property with key " + factoryId + " is not allowed",
                     ignored
             );
@@ -271,7 +272,7 @@ class FactoryFinder {
      * @return
      *          the URL for the class or null if it wasn't found
      */
-    static URL which(Class clazz) {
+    static URL which(Class<?> clazz) {
         return which(clazz, getClassClassLoader(clazz));
     }
 
@@ -287,7 +288,7 @@ class FactoryFinder {
      * @return
      *          the URL for the class or null if it wasn't found
      */
-    static URL which(Class clazz, ClassLoader loader) {
+    static URL which(Class<?> clazz, ClassLoader loader) {
 
         String classnameAsResource = clazz.getName().replace('.', '/') + ".class";
 
@@ -302,18 +303,17 @@ class FactoryFinder {
         if (System.getSecurityManager() == null) {
             return ClassLoader.getSystemClassLoader();
         } else {
-            return (ClassLoader) java.security.AccessController.doPrivileged(
-                    (PrivilegedAction) ClassLoader::getSystemClassLoader);
+            return java.security.AccessController.doPrivileged(
+                    (PrivilegedAction<ClassLoader>) ClassLoader::getSystemClassLoader);
         }
     }
 
-    @SuppressWarnings("unchecked")
-    private static ClassLoader getClassClassLoader(final Class c) {
+    private static ClassLoader getClassClassLoader(final Class<?> c) {
         if (System.getSecurityManager() == null) {
             return c.getClassLoader();
         } else {
-            return (ClassLoader) java.security.AccessController.doPrivileged(
-                    (PrivilegedAction) c::getClassLoader);
+            return java.security.AccessController.doPrivileged(
+                    (PrivilegedAction<ClassLoader>) c::getClassLoader);
         }
     }
 
