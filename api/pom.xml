@@ -350,6 +350,27 @@
                             !org.glassfish.hk2.osgiresourcelocator,
                             *
                         </Import-Package>
+                        <Require-Capability><![CDATA[
+                            osgi.extender;filter:="(&(osgi.extender=osgi.serviceloader.processor)
+                              (version>=1.0.0)(!(version>=2.0.0)))";resolution:=optional,
+                            osgi.serviceloader;
+                              filter:="(osgi.serviceloader=jakarta.xml.soap.MessageFactory)";
+                                osgi.serviceloader="jakarta.xml.soap.MessageFactory";
+                                cardinality:=multiple;resolution:=optional,
+                            osgi.serviceloader;
+                              filter:="(osgi.serviceloader=jakarta.xml.soap.SAAJMetaFactory)";
+                                osgi.serviceloader="jakarta.xml.soap.SAAJMetaFactory";
+                                cardinality:=multiple;resolution:=optional,
+                            osgi.serviceloader;
+                              filter:="(osgi.serviceloader=jakarta.xml.soap.SOAPConnectionFactory)";
+                                osgi.serviceloader="jakarta.xml.soap.SOAPConnectionFactory";
+                                cardinality:=multiple;resolution:=optional,
+                            osgi.serviceloader;
+                              filter:="(osgi.serviceloader=jakarta.xml.soap.SOAPFactory)";
+                                osgi.serviceloader="jakarta.xml.soap.SOAPFactory";
+                                cardinality:=multiple;resolution:=optional
+                          ]]>
+                        </Require-Capability>
                     </instructions>
                 </configuration>
                 <executions>
