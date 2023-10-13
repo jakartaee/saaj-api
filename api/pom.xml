@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2013, 2022 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2013, 2023 Oracle and/or its affiliates. All rights reserved.
 
     This program and the accompanying materials are made available under the
     terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -17,7 +17,7 @@
     <parent>
         <groupId>org.eclipse.ee4j</groupId>
         <artifactId>project</artifactId>
-        <version>1.0.7</version>
+        <version>1.0.8</version>
         <relativePath/>
     </parent>
 
@@ -30,14 +30,14 @@
         <spotbugs.exclude>${project.basedir}/../etc/spotbugs-exclude.xml</spotbugs.exclude>
         <spotbugs.skip>false</spotbugs.skip>
         <spotbugs.threshold>Low</spotbugs.threshold>
-        <spotbugs.version>4.5.3.0</spotbugs.version>
+        <spotbugs.version>4.7.3.6</spotbugs.version>
 
         <maven.compiler.release>11</maven.compiler.release>
         <extension.name>jakarta.xml.soap</extension.name>
         <spec.version>2.0</spec.version>
         <new.spec.version>3.0</new.spec.version>
         <non.final>false</non.final>
-        <activation.version>2.1.0</activation.version>
+        <activation.version>2.1.2</activation.version>
         <legal.doc.source>${project.basedir}/..</legal.doc.source>
         <vendor.name>Eclipse Foundation</vendor.name>
     </properties>
@@ -47,12 +47,12 @@
     <version>3.0.1-SNAPSHOT</version>
     <description>Provides the API for creating and building SOAP messages.</description>
     <name>Jakarta SOAP with Attachments API</name>
-    <url>https://github.com/eclipse-ee4j/saaj-api</url>
+    <url>https://github.com/jakartaee/saaj-api</url>
 
     <scm>
-        <connection>scm:git:git://github.com/eclipse-ee4j/saaj-api.git</connection>
-        <developerConnection>scm:git:git:@github.com:eclipse-ee4j/saaj-api.git</developerConnection>
-        <url>https://github.com/eclipse-ee4j/saaj-api</url>
+        <connection>scm:git:git://github.com/jakartaee/saaj-api.git</connection>
+        <developerConnection>scm:git:git:@github.com:jakartaee/saaj-api.git</developerConnection>
+        <url>https://github.com/jakartaee/saaj-api</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -77,7 +77,7 @@
 
     <issueManagement>
         <system>IssueTracker</system>
-        <url>https://github.com/eclipse-ee4j/saaj-api/issues</url>
+        <url>https://github.com/jakartaee/saaj-api/issues</url>
     </issueManagement>
 
     <mailingLists>
@@ -111,7 +111,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>buildnumber-maven-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.2.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.glassfish.copyright</groupId>
@@ -121,14 +121,16 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M5</version>
+                    <version>3.1.2</version>
                     <configuration>
                         <useModulePath>false</useModulePath>
+                        <argLine>-Djava.security.manager=allow</argLine>
                     </configuration>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.9.0</version>
+                    <version>3.11.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.glassfish.build</groupId>
@@ -138,7 +140,7 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>5.1.4</version>
+                    <version>5.1.9</version>
                     <configuration>
                         <instructions>
                             <_noextraheaders>true</_noextraheaders>
@@ -148,7 +150,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.2.2</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -158,7 +160,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.3.1</version>
+                    <version>3.6.0</version>
                 </plugin>
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
@@ -172,12 +174,12 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.4.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.4.1</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -440,7 +442,7 @@ Use is subject to <a href="{@docRoot}/doc-files/speclicense.html" target="_top">
                         <plugin>
                             <groupId>org.jacoco</groupId>
                             <artifactId>jacoco-maven-plugin</artifactId>
-                            <version>0.8.7</version>
+                            <version>0.8.10</version>
                         </plugin>
                     </plugins>
                 </pluginManagement>
