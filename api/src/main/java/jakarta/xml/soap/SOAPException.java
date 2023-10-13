@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2023 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -66,6 +66,7 @@ public class SOAPException extends Exception {
      * @param cause a {@code Throwable} object that is to
      *        be embedded in this {@code SOAPException} object
      */
+    @SuppressWarnings({"this-escape"})
     public SOAPException(String reason, Throwable cause) {
         super(reason);
         initCause(cause);
@@ -78,6 +79,7 @@ public class SOAPException extends Exception {
      * @param cause a {@code Throwable} object that is to
      *        be embedded in this {@code SOAPException} object
      */
+    @SuppressWarnings({"this-escape"})
     public SOAPException(Throwable cause) {
         super(cause.toString());
         initCause(cause);
