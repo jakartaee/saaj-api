@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2016, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -26,10 +26,12 @@ import java.util.Collection;
 import java.util.logging.Logger;
 import jakarta.xml.soap.MessageFactory;
 
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertTrue;
 
 /*
- * test for JDK-8131334: SAAJ Plugability Layer: using java.util.ServiceLoader
+ * test for JDK-8131334: SAAJ Pluggability Layer: using java.util.ServiceLoader
  */
 @RunWith(Parameterized.class)
 public class SAAJFactoryTest {
@@ -62,7 +64,7 @@ public class SAAJFactoryTest {
     @Parameterized.Parameters
     public static Collection<?> configurations() {
         return Arrays.asList(new Object[][]{
-                // see SAAJFactoryTest constructor signature for paremeters meaning ...
+                // see SAAJFactoryTest constructor signature for parameters meaning ...
                 {null, "com.sun.xml.internal.messaging.saaj.soap.ver1_1.SOAPMessageFactory1_1Impl", jakarta.xml.soap.SOAPException.class, "scenario2", null},
                 {"saaj.factory.Valid", "saaj.factory.Valid", null, "scenario5", null},
                 {"saaj.factory.NonExisting SAAJFactoryTest", null, jakarta.xml.soap.SOAPException.class, "scenario6", null},
@@ -103,10 +105,9 @@ public class SAAJFactoryTest {
         logConfigurations();
         try {
             MessageFactory factory = factory();
-            assertTrue("No factory found.", factory != null);
+            assertNotNull("No factory found.", factory);
             String className = factory.getClass().getName();
-            assertTrue("Incorrect factory: [" + className + "], Expected: [" + expectedFactory + "]",
-                    expectedFactory.equals(className));
+            assertEquals("Incorrect factory: [" + className + "], Expected: [" + expectedFactory + "]", expectedFactory, className);
 
         } catch (Throwable throwable) {
             Class<?> throwableClass = throwable.getClass();

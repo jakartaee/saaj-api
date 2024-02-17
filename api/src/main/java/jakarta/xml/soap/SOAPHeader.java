@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -27,18 +27,18 @@ import javax.xml.namespace.QName;
  * object, which is optional, is not needed, it can be retrieved and deleted
  * with the following line of code. The variable <i>se</i> is a
  * {@code SOAPEnvelope} object.
- * <pre>{@code
- *      se.getHeader().detachNode();
- * }</pre>
+ * {@snippet :
+ *  se.getHeader().detachNode();
+ * }
  *
  * A {@code SOAPHeader} object is created with the {@code SOAPEnvelope}
  * method {@code addHeader}. This method, which creates a new header and adds it
  * to the envelope, may be called only after the existing header has been removed.
  *
- * <pre>{@code
- *      se.getHeader().detachNode();
- *      SOAPHeader sh = se.addHeader();
- * }</pre>
+ * {@snippet :
+ *  se.getHeader().detachNode();
+ *  SOAPHeader sh = se.addHeader();
+ * }
  * <P>
  * A {@code SOAPHeader} object can have only {@code SOAPHeaderElement}
  * objects as its immediate children. The method {@code addHeaderElement}
@@ -46,9 +46,9 @@ import javax.xml.namespace.QName;
  * {@code SOAPHeader} object. In the following line of code, the
  * argument to the method {@code addHeaderElement} is a {@code Name}
  * object that is the name for the new {@code HeaderElement} object.
- * <pre>{@code
- *      SOAPHeaderElement shElement = sh.addHeaderElement(name);
- * }</pre>
+ * {@snippet :
+ *  SOAPHeaderElement shElement = sh.addHeaderElement(name);
+ * }
  *
  * @see SOAPHeaderElement
  * @since 1.6
@@ -109,7 +109,7 @@ public interface SOAPHeader extends SOAPElement {
      * Returns an {@code Iterator} over all the {@code SOAPHeaderElement} objects
      * in this {@code SOAPHeader} object
      * that have the specified <i>actor</i>.
-     *
+     * <p>
      * An <i>actor</i> is a global attribute that indicates the intermediate
      * parties that should process a message before it reaches its ultimate
      * receiver. An actor receives the message and processes it before sending

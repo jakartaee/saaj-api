@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -38,7 +38,7 @@ public abstract class SOAPConnectionFactory {
     /**
      * Creates an instance of the default
      * {@code SOAPConnectionFactory} object.
-     *
+     * <p>
      * This method uses the lookup procedure specified in {@link jakarta.xml.soap} to locate and load the
      * {@link jakarta.xml.soap.SOAPConnectionFactory} class.
      *

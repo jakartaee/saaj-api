@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -38,11 +38,11 @@ public class MimeHeaders {
     }
 
     /**
-     * Returns all of the values for the specified header as an array of
+     * Returns all the values for the specified header as an array of
      * {@code String} objects.
      *
      * @param   name the name of the header for which values will be returned
-     * @return a {@code String} array with all of the values for the
+     * @return a {@code String} array with all the values for the
      *         specified header
      * @see #setHeader
      */
@@ -56,10 +56,10 @@ public class MimeHeaders {
                 values.addElement(hdr.getValue());
         }
 
-        if (values.size() == 0)
+        if (values.isEmpty())
             return null;
 
-        String r[] = new String[values.size()];
+        String[] r = new String[values.size()];
         values.copyInto(r);
         return r;
     }
@@ -84,7 +84,7 @@ public class MimeHeaders {
     {
         boolean found = false;
 
-        if ((name == null) || name.equals(""))
+        if ((name == null) || name.isEmpty())
             throw new IllegalArgumentException("Illegal MimeHeader name");
 
         for(int i = 0; i < headers.size(); i++) {
@@ -120,7 +120,7 @@ public class MimeHeaders {
      */
     public void addHeader(String name, String value)
     {
-        if ((name == null) || name.equals(""))
+        if ((name == null) || name.isEmpty())
             throw new IllegalArgumentException("Illegal MimeHeader name");
 
         int pos = headers.size();

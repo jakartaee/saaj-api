@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -10,8 +10,6 @@
 
 package jakarta.xml.soap;
 
-
-import java.net.URLConnection;
 
 /**
  * A point-to-point connection that a client can use for sending messages
@@ -24,10 +22,10 @@ import java.net.URLConnection;
  * <p>
  * A client can obtain a {@code SOAPConnection} object using a
  * {@link SOAPConnectionFactory} object as in the following example:
- * <pre>{@code
- *      SOAPConnectionFactory factory = SOAPConnectionFactory.newInstance();
- *      SOAPConnection con = factory.createConnection();
- * }</pre>
+ * {@snippet :
+ *  SOAPConnectionFactory factory = SOAPConnectionFactory.newInstance();
+ *  SOAPConnection con = factory.createConnection();
+ * }
  * A {@code SOAPConnection} object can be used to send messages
  * directly to a URL following the request/response paradigm.  That is,
  * messages are sent using the method {@code call}, which sends the

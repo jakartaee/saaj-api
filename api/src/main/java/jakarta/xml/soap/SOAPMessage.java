@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -41,12 +41,12 @@ import jakarta.activation.DataHandler;
  * object, and the {@code SOAPEnvelope} object is used to retrieve the
  * {@code SOAPBody} and {@code SOAPHeader} objects.
  *
- * <pre>{@code
- *     SOAPPart sp = message.getSOAPPart();
- *     SOAPEnvelope se = sp.getEnvelope();
- *     SOAPBody sb = se.getBody();
- *     SOAPHeader sh = se.getHeader();
- * }</pre>
+ * {@snippet :
+ *  SOAPPart sp = message.getSOAPPart();
+ *  SOAPEnvelope se = sp.getEnvelope();
+ *  SOAPBody sb = se.getBody();
+ *  SOAPHeader sh = se.getHeader();
+ * }
  *
  * <P>
  * In addition to the mandatory {@code SOAPPart} object, a {@code SOAPMessage}

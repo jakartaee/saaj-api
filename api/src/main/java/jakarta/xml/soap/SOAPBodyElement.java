@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -20,9 +20,9 @@ package jakarta.xml.soap;
  * method {@code addBodyElement}. In the following line of code,
  * {@code sb} is a {@code SOAPBody} object, and
  * {@code myName} is a {@code Name} object.
- * <pre>{@code
- *    SOAPBodyElement sbe = sb.addBodyElement(myName);
- * }</pre>
+ * {@snippet :
+ *  SOAPBodyElement sbe = sb.addBodyElement(myName);
+ * }
  *
  * @since 1.6
  */

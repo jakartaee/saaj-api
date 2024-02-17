@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -10,16 +10,11 @@
 
 package jakarta.xml.soap;
 
-import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.Iterator;
-import java.util.Properties;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +25,7 @@ class FactoryFinder {
     private static final Logger logger;
 
     private static final ServiceLoaderUtil.ExceptionHandler<SOAPException> EXCEPTION_HANDLER =
-            new ServiceLoaderUtil.ExceptionHandler<SOAPException>() {
+            new ServiceLoaderUtil.ExceptionHandler<>() {
                 @Override
                 public SOAPException createException(Throwable throwable, String message) {
                     return new SOAPException(message, throwable);
@@ -152,15 +147,12 @@ class FactoryFinder {
 
     private static String fromSystemProperty(String factoryId) {
         String systemProp = getSystemProperty(factoryId);
-        if (systemProp != null) {
-            return systemProp;
-        }
-        return null;
+        return systemProp;
     }
 
     private static String getSystemProperty(final String property) {
         logger.log(Level.FINE, "Checking system property {0}", property);
-        String value = AccessController.doPrivileged(new PrivilegedAction<String>() {
+        String value = AccessController.doPrivileged(new PrivilegedAction<>() {
             @Override
             public String run() {
                 return System.getProperty(property);
@@ -218,9 +210,9 @@ class FactoryFinder {
 
     /**
      * Get the URL for the Class from it's ClassLoader.
-     *
+     * <p>
      * Convenience method for {@link #which(Class, ClassLoader)}.
-     *
+     * <p>
      * Equivalent to calling: which(clazz, clazz.getClassLoader())
      *
      * @param clazz

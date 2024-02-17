@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2005, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -32,7 +32,7 @@
  * References in this document to JAXB refer to the Jakarta XML Binding unless otherwise noted.
  *
  * <p>
- * In addition the APIs in the <code>jakarta.xml.soap</code> package extend
+ * In addition, the APIs in the <code>jakarta.xml.soap</code> package extend
  * their  counterparts in the <code>org.w3c.dom</code> package. This means that
  * the  <code>SOAPPart</code> of a <code>SOAPMessage</code> is also a DOM Level
  * 2 <code>Document</code>, and can be manipulated as such by applications,

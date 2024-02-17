@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -34,13 +34,13 @@ import javax.xml.namespace.QName;
  * {@code Name} object to pass to the method {@code addDetailEntry}.
  * The variable <i>se</i>, used to create the {@code Name} object,
  * is a {@code SOAPEnvelope} object.
- * <pre>{@code
- *    Detail d = sf.getDetail();
- *    Name name = se.createName("GetLastTradePrice", "WOMBAT",
- *                                "http://www.wombat.org/trader");
- *    d.addDetailEntry(name);
- *    Iterator<DetailEntry> it = d.getDetailEntries();
- * }</pre>
+ * {@snippet :
+ *  Detail d = sf.getDetail();
+ *  Name name = se.createName("GetLastTradePrice", "WOMBAT",
+ *                              "http://www.wombat.org/trader");
+ *  d.addDetailEntry(name);
+ *  Iterator<DetailEntry> it = d.getDetailEntries();
+ * }
  *
  * @since 1.6
  */

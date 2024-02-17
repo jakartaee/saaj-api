@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2021 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -40,17 +40,17 @@ package jakarta.xml.soap;
  * The following line of
  * code, in which <i>se</i> is a {@code SOAPEnvelope} object, creates a new
  * {@code Name} object with all three.
- * <pre>{@code
- *     Name name = se.createName("GetLastTradePrice", "WOMBAT",
- *                                "http://www.wombat.org/trader");
- * }</pre>
+ * {@snippet :
+ *  Name name = se.createName("GetLastTradePrice", "WOMBAT",
+ *                             "http://www.wombat.org/trader");
+ * }
  * The following line of code gives an example of how a {@code Name} object
  * can be used. The variable <i>element</i> is a {@code SOAPElement} object.
  * This code creates a new {@code SOAPElement} object with the given name and
  * adds it to <i>element</i>.
- * <pre>{@code
- *     element.addChildElement(name);
- * }</pre>
+ * {@snippet :
+ *  element.addChildElement(name);
+ * }
  * <P>
  * The {@code Name} interface may be deprecated in a future release of SAAJ
  * in favor of {@code javax.xml.namespace.QName}
