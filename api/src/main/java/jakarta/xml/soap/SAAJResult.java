@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2023 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -75,7 +75,7 @@ public class SAAJResult extends DOMResult {
      * {@code SOAPPart} of the supplied {@code SOAPMessage}.
      * In the normal case these results will be written using DOM APIs and,
      * as a result, the finished {@code SOAPPart} will not be guaranteed
-     * to be well-formed unless the data used to create it is also well formed.
+     * to be well-formed unless the data used to create it is also well-formed.
      * When used in a transformation the validity of the {@code SOAPMessage}
      * after the transformation can be guaranteed only by means outside SAAJ
      * specification.

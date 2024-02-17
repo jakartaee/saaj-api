@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -31,12 +31,12 @@ package jakarta.xml.soap;
  * object <i>message</i> to get the {@code SOAPPart} object <i>sp</i>,
  * which is then used to get the {@code SOAPEnvelope} object <i>se</i>.
  *
- * <pre>{@code
- *     SOAPPart sp = message.getSOAPPart();
- *     SOAPEnvelope se = sp.getEnvelope();
- *     SOAPHeader sh = se.getHeader();
- *     SOAPBody sb = se.getBody();
- * }</pre>
+ * {@snippet :
+ *  SOAPPart sp = message.getSOAPPart();
+ *  SOAPEnvelope se = sp.getEnvelope();
+ *  SOAPHeader sh = se.getHeader();
+ *  SOAPBody sb = se.getBody();
+ * }
  * <P>
  * It is possible to change the body or header of a {@code SOAPEnvelope}
  * object by retrieving the current one, deleting it, and then adding
@@ -44,9 +44,9 @@ package jakarta.xml.soap;
  * {@code detachNode} deletes the XML element (node) on which it is
  * called.  For example, the following line of code deletes the
  * {@code SOAPBody} object that is retrieved by the method {@code getBody}.
- * <pre>{@code
- *      se.getBody().detachNode();
- * }</pre>
+ * {@snippet :
+ *  se.getBody().detachNode();
+ * }
  * To create a {@code SOAPHeader} object to replace the one that was removed,
  * a client uses
  * the method {@code SOAPEnvelope.addHeader}, which creates a new header and
@@ -56,28 +56,28 @@ package jakarta.xml.soap;
  * retrieves the current header, removes it, and adds a new one. Then
  * it retrieves the current body, removes it, and adds a new one.
  *
- * <pre>{@code
- *     SOAPPart sp = message.getSOAPPart();
- *     SOAPEnvelope se = sp.getEnvelope();
- *     se.getHeader().detachNode();
- *     SOAPHeader sh = se.addHeader();
- *     se.getBody().detachNode();
- *     SOAPBody sb = se.addBody();
- * }</pre>
+ * {@snippet :
+ *  SOAPPart sp = message.getSOAPPart();
+ *  SOAPEnvelope se = sp.getEnvelope();
+ *  se.getHeader().detachNode();
+ *  SOAPHeader sh = se.addHeader();
+ *  se.getBody().detachNode();
+ *  SOAPBody sb = se.addBody();
+ * }
  * It is an error to add a {@code SOAPBody} or {@code SOAPHeader}
  * object if one already exists.
  * <P>
  * The {@code SOAPEnvelope} interface provides three methods for creating
  * {@code Name} objects. One method creates {@code Name} objects with
- * a local name, a namespace prefix, and a namesapce URI. The second method creates
+ * a local name, a namespace prefix, and a namespace URI. The second method creates
  * {@code Name} objects with a local name and a namespace prefix, and the third
  * creates {@code Name} objects with just a local name.  The following line of
  * code, in which <i>se</i> is a {@code SOAPEnvelope} object, creates a new
  * {@code Name} object with all three.
- * <pre>{@code
- *     Name name = se.createName("GetLastTradePrice", "WOMBAT",
- *                                "http://www.wombat.org/trader");
- * }</pre>
+ * {@snippet :
+ *  Name name = se.createName("GetLastTradePrice", "WOMBAT",
+ *                             "http://www.wombat.org/trader");
+ * }
  *
  * @since 1.6
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -117,7 +117,7 @@ public interface SOAPHeaderElement extends SOAPElement {
      * block must be relayed by any node that is targeted by the header block
      * but not actually process it. This attribute is ignored on header blocks
      * whose mustUnderstand attribute is set to true or that are targeted at
-     * the ultimate reciever (which is the default). The default value of this
+     * the ultimate receiver (which is the default). The default value of this
      * attribute is {@code false}.
      *
      * @param relay the new value of the <i>relay</i> attribute

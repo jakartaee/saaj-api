@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -252,7 +252,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
     String getAttributeValue(QName qname);
 
     /**
-     * Returns an {@code Iterator} over all of the attribute
+     * Returns an {@code Iterator} over all the attribute
      * {@code Name} objects in this
      * {@code SOAPElement} object. The iterator can be used to get
      * the attribute names, which can then be passed to the method
@@ -265,7 +265,7 @@ public interface SOAPElement extends Node, org.w3c.dom.Element {
     Iterator<Name> getAllAttributes();
 
     /**
-     * Returns an {@code Iterator} over all of the attributes
+     * Returns an {@code Iterator} over all the attributes
      * in this {@code SOAPElement}  as {@code QName} objects.
      * The iterator can be used to get the attribute QName, which can then
      * be passed to the method {@code getAttributeValue} to retrieve

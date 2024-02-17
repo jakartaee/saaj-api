@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -20,10 +20,10 @@ import java.io.InputStream;
  * A SAAJ client can create a {@code MessageFactory} object
  * using the method {@code newInstance}, as shown in the following
  * lines of code.
- * <pre>{@code
- *       MessageFactory mf = MessageFactory.newInstance();
- *       MessageFactory mf12 = MessageFactory.newInstance(SOAPConstants.SOAP_1_2_PROTOCOL);
- * }</pre>
+ * {@snippet :
+ *  MessageFactory mf = MessageFactory.newInstance();
+ *  MessageFactory mf12 = MessageFactory.newInstance(SOAPConstants.SOAP_1_2_PROTOCOL);
+ * }
  * <P>
  * All {@code MessageFactory} objects, regardless of how they are
  * created, will produce {@code SOAPMessage} objects that
@@ -35,7 +35,7 @@ import java.io.InputStream;
  *  <LI>A {@code SOAPHeader} object
  * </UL>
  * In some cases, specialized MessageFactory objects may be obtained that produce messages
- * prepopulated with additional entries in the {@code SOAPHeader} object and the
+ * pre-populated with additional entries in the {@code SOAPHeader} object and the
  * {@code SOAPBody} object.
  * The content of a new {@code SOAPMessage} object depends on which of the two
  * {@code MessageFactory} methods is used to create it.
@@ -65,7 +65,7 @@ public abstract class MessageFactory {
     /**
      * Creates a new {@code MessageFactory} object that is an instance
      * of the default implementation (SOAP 1.1).
-     *
+     * <p>
      * This method uses the lookup procedure specified in {@link jakarta.xml.soap} to locate and load the
      * {@link jakarta.xml.soap.MessageFactory} class.
      *
@@ -104,7 +104,7 @@ public abstract class MessageFactory {
      * a SOAP 1.1 message factory, or a SOAP 1.2 message factory. A dynamic
      * message factory creates messages based on the MIME headers specified
      * as arguments to the {@code createMessage} method.
-     *
+     * <p>
      * This method uses the SAAJMetaFactory to locate the implementation class
      * and create the MessageFactory instance.
      *
@@ -130,7 +130,7 @@ public abstract class MessageFactory {
      * Creates a new {@code SOAPMessage} object with the default
      * {@code SOAPPart}, {@code SOAPEnvelope}, {@code SOAPBody},
      * and {@code SOAPHeader} objects. Profile-specific message factories
-     * can choose to prepopulate the {@code SOAPMessage} object with
+     * can choose to pre-populate the {@code SOAPMessage} object with
      * profile-specific headers.
      * <P>
      * Content can be added to this message's {@code SOAPPart} object, and

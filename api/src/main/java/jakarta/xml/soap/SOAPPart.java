@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -39,9 +39,9 @@ import javax.xml.transform.Source;
  * calling the method {@code SOAPMessage.getSOAPPart}. The
  * following  line of code, in which {@code message} is a
  * {@code SOAPMessage} object, retrieves the SOAP part of a message.
- * <pre>{@code
- *   SOAPPart soapPart = message.getSOAPPart();
- * }</pre>
+ * {@snippet :
+ *  SOAPPart soapPart = message.getSOAPPart();
+ * }
  * <P>
  * A {@code SOAPPart} object contains a {@code SOAPEnvelope} object,
  * which in turn contains a {@code SOAPBody} object and a
@@ -161,7 +161,7 @@ public abstract class SOAPPart implements org.w3c.dom.Document, Node {
      * existing header is a match. If there is a match, this method clears
      * all existing values for the first header that matches and sets the
      * given value instead. If more than one header has
-     * the given name, this method removes all of the matching headers after
+     * the given name, this method removes all the matching headers after
      * the first one.
      * <P>
      * Note that RFC822 headers can contain only US-ASCII characters.
@@ -201,7 +201,7 @@ public abstract class SOAPPart implements org.w3c.dom.Document, Node {
      * Retrieves all the headers for this {@code SOAPPart} object
      * as an iterator over the {@code MimeHeader} objects.
      *
-     * @return  an {@code Iterator} object with all of the Mime
+     * @return  an {@code Iterator} object with all the Mime
      *          headers for this {@code SOAPPart} object
      */
     public abstract Iterator<MimeHeader> getAllMimeHeaders();
@@ -212,7 +212,7 @@ public abstract class SOAPPart implements org.w3c.dom.Document, Node {
      *
      * @param names a {@code String} array with the name(s) of the
      *        MIME headers to be returned
-     * @return  all of the MIME headers that match one of the names in the
+     * @return  all the MIME headers that match one of the names in the
      *           given array, returned as an {@code Iterator} object
      */
     public abstract Iterator<MimeHeader> getMatchingMimeHeaders(String[] names);
@@ -223,9 +223,9 @@ public abstract class SOAPPart implements org.w3c.dom.Document, Node {
      *
      * @param names a {@code String} array with the name(s) of the
      *        MIME headers not to be returned
-     * @return  all of the MIME headers in this {@code SOAPPart} object
+     * @return  all the MIME headers in this {@code SOAPPart} object
      *          except those that match one of the names in the
-     *           given array.  The nonmatching MIME headers are returned as an
+     *           given array.  The non-matching MIME headers are returned as an
      *           {@code Iterator} object.
      */
     public abstract Iterator<MimeHeader> getNonMatchingMimeHeaders(String[] names);

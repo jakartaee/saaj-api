@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -34,15 +34,15 @@ import jakarta.activation.DataHandler;
  *       This header identifies the type of data in the content of an
  *       {@code AttachmentPart} object and MUST conform to [RFC2045].
  *       The following is an example of a Content-Type header:
- *       <PRE>
- *       Content-Type:  application/xml
- *       </PRE>
+ *       {@snippet :
+ *        Content-Type:  application/xml
+ *       }
  *       The following line of code, in which {@code ap} is an
  *       {@code AttachmentPart} object, sets the header shown in
  *       the previous example.
- *       <PRE>
- *       ap.setMimeHeader("Content-Type", "application/xml");
- *       </PRE>
+ *       {@snippet :
+ *        ap.setMimeHeader("Content-Type", "application/xml");
+ *       }
  *  </UL>
  * </OL>
  * <p>
@@ -58,28 +58,28 @@ import jakarta.activation.DataHandler;
  *
  * <p>
  * The following code fragment, in which {@code m} is a
- * {@code SOAPMessage} object and {@code contentStringl} is a
+ * {@code SOAPMessage} object and {@code contentString} is a
  * {@code String}, creates an instance of {@code AttachmentPart},
  * sets the {@code AttachmentPart} object with some content and
  * header information, and adds the {@code AttachmentPart} object to
  * the {@code SOAPMessage} object.
- * <PRE>
- *     AttachmentPart ap1 = m.createAttachmentPart();
- *     ap1.setContent(contentString1, "text/plain");
- *     m.addAttachmentPart(ap1);
- * </PRE>
+ * {@snippet :
+ *  AttachmentPart ap1 = m.createAttachmentPart();
+ *  ap1.setContent(contentString1, "text/plain");
+ *  m.addAttachmentPart(ap1);
+ * }
  *
  *
  * <p>
  * The following code fragment creates and adds a second
  * {@code AttachmentPart} instance to the same message. {@code jpegData}
  * is a binary byte buffer representing the jpeg file.
- * <PRE>
- *     AttachmentPart ap2 = m.createAttachmentPart();
- *     byte[] jpegData =  ...;
- *     ap2.setContent(new ByteArrayInputStream(jpegData), "image/jpeg");
- *     m.addAttachmentPart(ap2);
- * </PRE>
+ * {@snippet :
+ *  AttachmentPart ap2 = m.createAttachmentPart();
+ *  byte[] jpegData =  ...;
+ *  ap2.setContent(new ByteArrayInputStream(jpegData), "image/jpeg");
+ *  m.addAttachmentPart(ap2);
+ * }
  * <p>
  * The {@code getContent} method retrieves the contents and header from
  * an {@code AttachmentPart} object. Depending on the
@@ -87,16 +87,16 @@ import jakarta.activation.DataHandler;
  * {@code Object} can either be a typed Java object corresponding
  * to the MIME type or an {@code InputStream} object that contains the
  * content as bytes.
- * <PRE>
- *     String content1 = ap1.getContent();
- *     java.io.InputStream content2 = ap2.getContent();
- * </PRE>
+ * {@snippet :
+ *  String content1 = ap1.getContent();
+ *  java.io.InputStream content2 = ap2.getContent();
+ * }
  *
  * The method {@code clearContent} removes all the content from an
  * {@code AttachmentPart} object but does not affect its header information.
- * <PRE>
- *     ap1.clearContent();
- * </PRE>
+ * {@snippet :
+ *  ap1.clearContent();
+ * }
  *
  * @since 1.6
  */
@@ -257,7 +257,7 @@ public abstract class AttachmentPart {
      * @param contentType the value to set into the {@code Content-Type}
      * header
      *
-     * @exception SOAPException if an there is an error in setting the content
+     * @exception SOAPException if there is an error in setting the content
      * @exception NullPointerException if {@code content} is null
      * @since 1.6, SAAJ 1.3
      */
@@ -275,7 +275,7 @@ public abstract class AttachmentPart {
      * @param offset the offset in the byte array of the content
      * @param len the number of bytes that form the content
      *
-     * @exception SOAPException if an there is an error in setting the content
+     * @exception SOAPException if there is an error in setting the content
      * or content is null
      * @since 1.6, SAAJ 1.3
      */
@@ -298,7 +298,7 @@ public abstract class AttachmentPart {
      * @param contentType the value to set into the {@code Content-Type}
      * header
      *
-     * @exception SOAPException if an there is an error in setting the content
+     * @exception SOAPException if there is an error in setting the content
      * @exception NullPointerException if {@code content} is null
      *
      * @since 1.6, SAAJ 1.3
@@ -487,7 +487,7 @@ public abstract class AttachmentPart {
      * Retrieves all the headers for this {@code AttachmentPart} object
      * as an iterator over the {@code MimeHeader} objects.
      *
-     * @return  an {@code Iterator} object with all of the Mime
+     * @return  an {@code Iterator} object with all the Mime
      *          headers for this {@code AttachmentPart} object
      */
     public abstract Iterator<MimeHeader> getAllMimeHeaders();
@@ -498,7 +498,7 @@ public abstract class AttachmentPart {
      *
      * @param names a {@code String} array with the name(s) of the
      *        MIME headers to be returned
-     * @return  all of the MIME headers that match one of the names in the
+     * @return  all the MIME headers that match one of the names in the
      *           given array as an {@code Iterator} object
      */
     public abstract Iterator<MimeHeader> getMatchingMimeHeaders(String[] names);
@@ -509,7 +509,7 @@ public abstract class AttachmentPart {
      *
      * @param names a {@code String} array with the name(s) of the
      *        MIME headers not to be returned
-     * @return  all of the MIME headers in this {@code AttachmentPart} object
+     * @return  all the MIME headers in this {@code AttachmentPart} object
      *          except those that match one of the names in the
      *           given array.  The nonmatching MIME headers are returned as an
      *           {@code Iterator} object.

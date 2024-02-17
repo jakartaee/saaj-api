@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -11,8 +11,6 @@
 package jakarta.xml.soap;
 
 import java.util.Locale;
-
-import org.w3c.dom.Document;
 
 import javax.xml.namespace.QName;
 

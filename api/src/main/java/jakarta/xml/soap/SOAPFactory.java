@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2004, 2022 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2004, 2024 Oracle and/or its affiliates. All rights reserved.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Distribution License v. 1.0, which is available at
@@ -17,13 +17,13 @@ import org.w3c.dom.Element;
 /**
  * {@code SOAPFactory} is a factory for creating various objects
  * that exist in the SOAP XML tree.
-
+ * <p>
  * {@code SOAPFactory} can be
  * used to create XML fragments that will eventually end up in the
  * SOAP part. These fragments can be inserted as children of the
  * {@link SOAPHeaderElement} or {@link SOAPBodyElement} or
  * {@link SOAPEnvelope} or other {@link SOAPElement} objects.
- *
+ * <p>
  * {@code SOAPFactory} also has methods to create
  * {@code jakarta.xml.soap.Detail} objects as well as
  * {@code java.xml.soap.Name} objects.
