@@ -1,4 +1,4 @@
-[//]: # " Copyright (c) 2023 Oracle and/or its affiliates. All rights reserved. "
+[//]: # " Copyright (c) 2023, 2024 Oracle and/or its affiliates. All rights reserved. "
 [//]: # "  "
 [//]: # " This program and the accompanying materials are made available under the "
 [//]: # " terms of the Eclipse Distribution License v. 1.0, which is available at "
@@ -17,11 +17,11 @@ This project implements the Eclipse Foundation Security Policy
 These versions of Jakarta XML Web Services are currently being supported with
 security updates.
 
-| Version                             | Released   | Supported          | 
-| ----------------------------------- | ---------- | ------------------ | 
-| 4.0 (Jakarta XML Web Services)      | 2022-03-31 | :white_check_mark: | 
-| 3.0 (Jakarta SOAP with Attachments) | 2022-03-30 | :white_check_mark: | 
-| < 3.0.1 (Jakarta XML Web Services)  | 2021-03-26 | :x:                | 
+| Version                             | Released   | Supported | 
+| ----------------------------------- | ---------- | --------- | 
+| 4.0 (Jakarta XML Web Services)      | 2022-03-31 | Yes       | 
+| 3.0 (Jakarta SOAP with Attachments) | 2022-03-30 | Yes       | 
+| < 3.0.1 (Jakarta XML Web Services)  | 2021-03-26 | No        | 
 
 ## Reporting a Vulnerability
 

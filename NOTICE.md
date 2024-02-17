@@ -1,4 +1,4 @@
-[//]: # " Copyright (c) 2018, 2023 Oracle and/or its affiliates. All rights reserved. "
+[//]: # " Copyright (c) 2018, 2024 Oracle and/or its affiliates. All rights reserved. "
 [//]: # "  "
 [//]: # " This program and the accompanying materials are made available under the "
 [//]: # " terms of the Eclipse Distribution License v. 1.0, which is available at "
@@ -6,7 +6,7 @@
 [//]: # "  "
 [//]: # " SPDX-License-Identifier: BSD-3-Clause "
 
-# Notices for Jakarta SOAP with Attachments
+# Notices for Jakarta XML Web Services
 
 This content is produced and maintained by the Jakarta XML Web Services project.
 
@@ -14,7 +14,7 @@ This content is produced and maintained by the Jakarta XML Web Services project.
 
 ## Trademarks
 
-Jakarta XML Web Services is a trademark of the Eclipse Foundation.
+Jakarta XML Web Services™ is a trademark of the Eclipse Foundation.
 
 ## Copyright
 
@@ -34,15 +34,9 @@ SPDX-License-Identifier: BSD-3-Clause
 
 The project maintains the following source code repositories:
 
-* https://github.com/jakartaee/jws-api
 * https://github.com/jakartaee/jax-ws-api
+* https://github.com/jakartaee/jws-api
 * https://github.com/jakartaee/saaj-api
-
-## Third-party Content
-
-This project leverages the following third party content.
-
-None
 
 ## Cryptography
 
