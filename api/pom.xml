@@ -44,7 +44,7 @@
 
     <groupId>jakarta.xml.soap</groupId>
     <artifactId>jakarta.xml.soap-api</artifactId>
-    <version>3.0.2</version>
+    <version>3.0.3-SNAPSHOT</version>
     <description>Provides the API for creating and building SOAP messages.</description>
     <name>Jakarta SOAP with Attachments API</name>
     <url>https://github.com/jakartaee/saaj-api</url>
